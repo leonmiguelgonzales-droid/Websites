@@ -7,12 +7,3 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
-```
-
----
-
-**STEP 6 — Test it locally**
-
-In Command Prompt (make sure you're inside the `sop-website` folder):
-```
-npm run dev
