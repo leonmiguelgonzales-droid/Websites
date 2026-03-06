@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 // ─── CONFIG — Change passwords here ──────────────────────────────────────────
 const READ_PASSWORD = "perlage";       // password just to view the site
-const ADMIN_PASSWORD = "perlage2026"; // password to edit the site
+const ADMIN_PASSWORD = "perlageadmin2020"; // password to edit the site
 
 // ─── Default SOP Data ─────────────────────────────────────────────────────────
 const DEFAULT_SOPS = {
