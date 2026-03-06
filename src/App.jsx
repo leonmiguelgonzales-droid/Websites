@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
-// ─── CONFIG — Change password here ───────────────────────────────────────────
-const ADMIN_PASSWORD = "perlage2026";
+// ─── CONFIG — Change passwords here ──────────────────────────────────────────
+const READ_PASSWORD = "perlage";       // password just to view the site
+const ADMIN_PASSWORD = "perlage2026"; // password to edit the site
 
 // ─── Default SOP Data ─────────────────────────────────────────────────────────
 const DEFAULT_SOPS = {
@@ -352,7 +353,49 @@ function SOPModal({ sop, lang, onSave, onClose }) {
   );
 }
 
-// ─── Login Modal ──────────────────────────────────────────────────────────────
+// ─── Gate Login Screen (full page) ───────────────────────────────────────────
+function GateLogin({ onEnter }) {
+  const [pw, setPw] = useState("");
+  const [err, setErr] = useState(false);
+  const attempt = () => {
+    if (pw === READ_PASSWORD || pw === ADMIN_PASSWORD) {
+      onEnter(pw === ADMIN_PASSWORD ? "admin" : "reader");
+    } else {
+      setErr(true);
+      setTimeout(() => setErr(false), 1500);
+    }
+  };
+  return (
+    <div style={{ minHeight: "100vh", background: "#0b120d", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Outfit', sans-serif", padding: 24 }}>
+      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", backgroundImage: "radial-gradient(ellipse at 20% 20%, rgba(40,80,40,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(212,175,106,0.07) 0%, transparent 50%)" }} />
+      <div style={{ background: "#111a12", border: "1px solid rgba(212,175,106,0.2)", borderRadius: 20, padding: "48px 44px", width: "100%", maxWidth: 380, textAlign: "center", position: "relative", zIndex: 1, boxShadow: "0 32px 80px rgba(0,0,0,0.6)" }}>
+        <div style={{ width: 56, height: 56, borderRadius: 14, background: "linear-gradient(135deg, #2d5a30, #1a3a1c)", border: "1px solid rgba(212,175,106,0.35)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+          <span style={{ color: "#d4af6a", fontSize: 13, fontWeight: 700, letterSpacing: 1, fontFamily: "'Cormorant Garamond', serif" }}>SOP</span>
+        </div>
+        <h1 style={{ margin: "0 0 4px", color: "#d4af6a", fontFamily: "'Cormorant Garamond', serif", fontSize: 28, letterSpacing: 1 }}>PERLAGE</h1>
+        <p style={{ margin: "0 0 6px", color: "#4a6b4c", fontSize: 12, letterSpacing: 2, textTransform: "uppercase" }}>Studios</p>
+        <p style={{ margin: "0 0 32px", color: "#4a5e4b", fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase" }}>Standard Operating Procedures</p>
+        <div style={{ height: 1, background: "rgba(212,175,106,0.1)", marginBottom: 28 }} />
+        <p style={{ margin: "0 0 16px", color: "#7a9a7c", fontSize: 13 }}>Enter your password to access</p>
+        <input
+          type="password" value={pw}
+          onChange={e => setPw(e.target.value)}
+          onKeyDown={e => e.key === "Enter" && attempt()}
+          placeholder="Password"
+          style={{ ...inputStyle, textAlign: "center", fontSize: 15, letterSpacing: 2, marginBottom: err ? 10 : 16, borderColor: err ? "#e05555" : "rgba(255,255,255,0.1)" }}
+          autoFocus
+        />
+        {err && <p style={{ color: "#e05555", fontSize: 12, margin: "0 0 14px" }}>Incorrect password</p>}
+        <button onClick={attempt} style={{ ...saveBtn, width: "100%", padding: "12px", fontSize: 14, justifyContent: "center", display: "flex" }}>
+          Enter →
+        </button>
+        <p style={{ margin: "20px 0 0", color: "#2d3e2e", fontSize: 11 }}>Confidential — Internal Use Only</p>
+      </div>
+    </div>
+  );
+}
+
+// ─── Admin Login Modal (for upgrading from reader to admin) ───────────────────
 function LoginModal({ onLogin, onClose, lang }) {
   const [pw, setPw] = useState("");
   const [err, setErr] = useState(false);
@@ -366,7 +409,7 @@ function LoginModal({ onLogin, onClose, lang }) {
         <h2 style={{ margin: "0 0 6px", color: "#d4af6a", fontFamily: "'Cormorant Garamond', serif", textAlign: "center", fontSize: 22 }}>Admin Login</h2>
         <p style={{ color: "#666", fontSize: 13, textAlign: "center", margin: "0 0 20px" }}>Perlage Studios</p>
         <input type="password" value={pw} onChange={e => setPw(e.target.value)} onKeyDown={e => e.key === "Enter" && attempt()}
-          placeholder={lang === "en" ? "Enter password" : "Passwort eingeben"}
+          placeholder={lang === "en" ? "Enter admin password" : "Admin-Passwort eingeben"}
           style={{ ...inputStyle, width: "100%", boxSizing: "border-box", marginBottom: err ? 8 : 14, borderColor: err ? "#e05555" : undefined }}
           autoFocus />
         {err && <p style={{ color: "#e05555", margin: "0 0 12px", fontSize: 12, textAlign: "center" }}>
@@ -406,8 +449,10 @@ function SOPCard({ sop, isAdmin, lang, onEdit, onDelete }) {
         </div>
       </div>
       {open && (
-        <div style={{ marginTop: 24, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 24 }}
-          dangerouslySetInnerHTML={{ __html: sop.content }} />
+        <div style={{ marginTop: 20, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
+          <div className="sop-content" style={{ background: "#fff", borderRadius: 10, padding: "24px 28px", boxShadow: "0 2px 16px rgba(0,0,0,0.15)" }}
+            dangerouslySetInnerHTML={{ __html: sop.content }} />
+        </div>
       )}
     </div>
   );
@@ -415,12 +460,18 @@ function SOPCard({ sop, isAdmin, lang, onEdit, onDelete }) {
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
+  const [access, setAccess] = useState(null); // null | "reader" | "admin"
   const [lang, setLang] = useState("en");
   const [sops, setSops] = useState({ en: DEFAULT_SOPS.en, de: DEFAULT_SOPS.de });
   const [isAdmin, setIsAdmin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [editingSOP, setEditingSOP] = useState(null);
   const [search, setSearch] = useState("");
+
+  // Show gate if not logged in
+  if (!access) {
+    return <GateLogin onEnter={(role) => { setAccess(role); if (role === "admin") setIsAdmin(true); }} />;
+  }
 
   const currentSops = sops[lang];
   const filtered = currentSops.filter(s =>
@@ -453,19 +504,19 @@ export default function App() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; }
         body { margin: 0; background: #0b120d; }
-        .sop-content h2 { color: #d4af6a; font-family: 'Cormorant Garamond', serif; font-size: 20px; margin: 28px 0 10px; border-bottom: 1px solid rgba(212,175,106,0.2); padding-bottom: 6px; }
-        .sop-content h3 { color: #b89a50; font-family: 'Cormorant Garamond', serif; font-size: 17px; margin: 20px 0 8px; }
-        .sop-content p { color: #c8c0b0; font-size: 14px; line-height: 1.75; margin: 8px 0; }
-        .sop-content ul, .sop-content ol { color: #c8c0b0; font-size: 14px; line-height: 1.8; padding-left: 22px; margin: 8px 0; }
+        .sop-content h2 { color: #2d5a30; font-family: 'Cormorant Garamond', serif; font-size: 20px; margin: 28px 0 10px; border-bottom: 2px solid rgba(45,90,48,0.15); padding-bottom: 6px; }
+        .sop-content h3 { color: #3a6e3c; font-family: 'Cormorant Garamond', serif; font-size: 17px; margin: 20px 0 8px; }
+        .sop-content p { color: #2a2a2a; font-size: 14px; line-height: 1.75; margin: 8px 0; }
+        .sop-content ul, .sop-content ol { color: #2a2a2a; font-size: 14px; line-height: 1.8; padding-left: 22px; margin: 8px 0; }
         .sop-content li { margin-bottom: 4px; }
         .sop-content table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
-        .sop-content thead tr { background: rgba(212,175,106,0.12); }
-        .sop-content th { color: #d4af6a; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid rgba(212,175,106,0.2); font-family: 'Outfit', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .sop-content td { color: #c0b89a; padding: 9px 14px; border: 1px solid rgba(255,255,255,0.07); vertical-align: top; line-height: 1.55; }
-        .sop-content tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
-        .sop-content .warning { background: rgba(220,80,50,0.12); border-left: 3px solid #e05555; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 14px 0; color: #f0a090; font-size: 13.5px; line-height: 1.65; }
-        .sop-content strong { color: #e0d8c8; }
-        .sop-content em { color: #a09880; }
+        .sop-content thead tr { background: rgba(45,90,48,0.08); }
+        .sop-content th { color: #2d5a30; font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid rgba(45,90,48,0.2); font-family: 'Outfit', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .sop-content td { color: #333; padding: 9px 14px; border: 1px solid #e0e0e0; vertical-align: top; line-height: 1.55; }
+        .sop-content tbody tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+        .sop-content .warning { background: rgba(220,80,50,0.07); border-left: 3px solid #d04030; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 14px 0; color: #a03020; font-size: 13.5px; line-height: 1.65; }
+        .sop-content strong { color: #1a1a1a; }
+        .sop-content em { color: #666; }
         [contenteditable] h2 { color: #d4af6a; font-family: 'Cormorant Garamond', serif; font-size: 20px; margin: 20px 0 8px; }
         [contenteditable] h3 { color: #b89a50; font-family: 'Cormorant Garamond', serif; font-size: 17px; margin: 16px 0 6px; }
         [contenteditable] table { width: 100%; border-collapse: collapse; margin: 10px 0; }
@@ -475,10 +526,10 @@ export default function App() {
         [contenteditable]:empty:before { content: 'Start writing your SOP content here. Use the toolbar above to add headings, lists, tables, and warning boxes...'; color: #555; pointer-events: none; }
       `}</style>
 
-      <div style={{ minHeight: "100vh", background: "#0b120d", fontFamily: "'Outfit', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#0f1a10", fontFamily: "'Outfit', sans-serif" }}>
         {/* Background */}
         <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0,
-          backgroundImage: "radial-gradient(ellipse at 15% 0%, rgba(40,80,40,0.35) 0%, transparent 55%), radial-gradient(ellipse at 85% 90%, rgba(212,175,106,0.06) 0%, transparent 50%)" }} />
+          backgroundImage: "radial-gradient(ellipse at 15% 0%, rgba(40,80,40,0.45) 0%, transparent 55%), radial-gradient(ellipse at 85% 90%, rgba(212,175,106,0.07) 0%, transparent 50%)" }} />
 
         {/* Header */}
         <header style={{ borderBottom: "1px solid rgba(212,175,106,0.15)", background: "rgba(11,18,13,0.96)", backdropFilter: "blur(14px)", position: "sticky", top: 0, zIndex: 10 }}>
@@ -543,7 +594,7 @@ export default function App() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder={lang === "en" ? "🔍  Search procedures..." : "🔍  Verfahren suchen..."}
-            style={{ width: "100%", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,175,106,0.15)", borderRadius: 10, padding: "11px 18px", color: "#e0d8c8", fontSize: 14, outline: "none", fontFamily: "'Outfit', sans-serif" }}
+            style={{ width: "100%", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,175,106,0.15)", borderRadius: 10, padding: "11px 18px", color: "#e0d8c8", fontSize: 14, outline: "none", fontFamily: "'Outfit', sans-serif" }}
           />
         </div>
 
@@ -573,7 +624,7 @@ export default function App() {
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const cardStyle = {
-  background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)",
+  background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
   borderRadius: 14, padding: "22px 26px", transition: "border-color 0.2s",
 };
 
