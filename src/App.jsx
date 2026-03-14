@@ -816,166 +816,144 @@ const pageTitle = { margin: "0 0 4px", color: "#2d3748", fontFamily: "'Cormorant
 const pageSubtitle = { margin: 0, color: "#9b8fc4", fontSize: 14 };
 
 // ─── PAGE: CREATOR FORM ───────────────────────────────────────────────────────
-const FORM_CONTENT = {
-  en: {
-    title: "Creator Onboarding",
-    subtitle: "Your Path to Success — Let's Get Started!",
-    welcome_title: "👋 Welcome!",
-    welcome_body: "We're excited to get to know you better. This questionnaire helps us understand your situation, goals, and technical setup so we can provide you with the best possible support.",
-    welcome_honest: "Please answer all questions honestly.",
-    welcome_time: "⏱️ Time needed: approx. 5–7 minutes",
-    progress: (s) => `Section ${s} of 4`,
-    sections: [
-      {
-        title: "👤 Personal Basics",
-        fields: [
-          { id: "age", label: "How old are you?", type: "number", required: true, min: 18, max: 99 },
-          { id: "country", label: "Which country do you live in?", type: "text", required: true },
-          { id: "nationality", label: "What is your nationality?", type: "text", required: true },
-          { id: "height_build", label: "Height & Build", type: "text", hint: 'E.g. "175 cm, athletic"', required: true, placeholder: "E.g. 170 cm, slim" },
-          { id: "tattoos_piercings", label: "Do you have tattoos or piercings?", type: "text", hint: "If yes, briefly describe", placeholder: "E.g. small tattoo on wrist" },
-          { id: "relationship_status", label: "Relationship Status", type: "select", required: true, options: ["Single","In a relationship","Married","Other"] },
-          { id: "living_situation", label: "Living Situation", type: "select", required: true, options: ["Living alone","With partner","With roommates","With parents","With family"] },
-        ]
-      },
-      {
-        title: "⏱️ Availability & Commitment",
-        fields: [
-          { id: "hours_per_week", label: "Hours per week you can dedicate?", type: "number", required: true, hint: "Min. 15–20 hours/week needed", min: 0, max: 168 },
-          { id: "productive_times", label: "When are you most productive?", type: "select", required: true, options: ["Morning (6–12)","Afternoon (12–18)","Evening (18–24)","Night (0–6)","Flexible"] },
-          { id: "content_days", label: "On which days can you create content?", type: "text", required: true, hint: "E.g. Mon–Fri or Daily", placeholder: "E.g. Mon, Wed, Fri" },
-          { id: "has_job", label: "Do you have another job?", type: "select", required: true, options: ["No","Yes, full-time","Yes, part-time","Yes, I'm a student"], toggle: { show: ["Yes, full-time","Yes, part-time","Yes, I'm a student"], field: "job_hours" } },
-          { id: "job_hours", label: "How many hours/week do you work there?", type: "number", conditional: true, min: 0, max: 80 },
-          { id: "commitment_duration", label: "How long are you planning to do OnlyFans?", type: "select", required: true, options: ["3–6 months","6–12 months","1 year or longer","Long-term (indefinite)"] },
-        ]
-      },
-      {
-        title: "📱 Technical Equipment",
-        fields: [
-          { id: "phone_model", label: "Which phone do you have?", type: "text", required: true, hint: "Model and year, e.g. iPhone 13", placeholder: "E.g. iPhone 14 Pro" },
-          { id: "has_ringlight", label: "Do you have a ring light?", type: "select", required: true, options: ["Yes, I have one","No, but willing to buy one","No"], toggle: { show: ["Yes, I have one"], field: "ringlight_model" } },
-          { id: "ringlight_model", label: "Which ring light model?", type: "text", conditional: true, placeholder: "E.g. Neewer 18 inch" },
-          { id: "has_tripod", label: "Do you have a tripod?", type: "select", required: true, options: ["Yes, I have one","No, but willing to buy one","No"], toggle: { show: ["Yes, I have one"], field: "tripod_model" } },
-          { id: "tripod_model", label: "Which tripod model?", type: "text", conditional: true, placeholder: "E.g. Manfrotto Compact" },
-          { id: "has_car", label: "Do you have a car?", type: "select", required: true, options: ["Yes","No"] },
-          { id: "has_microphone", label: "Do you have a microphone?", type: "select", required: true, options: ["Yes","No"] },
-        ]
-      },
-      {
-        title: "📲 Social Media",
-        fields: [
-          { id: "instagram", label: "Instagram Username", type: "text", hint: "@ not required", placeholder: "E.g. johndoe" },
-          { id: "tiktok", label: "TikTok Username", type: "text", placeholder: "@johndoe" },
-          { id: "twitter", label: "Twitter/X Username", type: "text", placeholder: "@johndoe" },
-          { id: "youtube", label: "YouTube Channel", type: "text", placeholder: "Channel name or URL" },
-          { id: "other_platforms", label: "Other Platforms", type: "text", hint: "E.g. Twitch, Snapchat", placeholder: "E.g. Twitch: johndoe" },
-          { id: "social_experience", label: "Social Media Experience", type: "select", required: true, options: ["No experience","Beginner (posted a few times)","Intermediate (regular posts)","Advanced (active content creation)","Professional (monetized)"] },
-          { id: "geo_blocking", label: "Geo-Blocking Preferences", type: "text", hint: "Countries you want to block (optional)", placeholder: "E.g. Germany, Austria" },
-        ]
-      }
-    ],
-    btn_next: "Next →",
-    btn_back: "← Back",
-    btn_review: "Review Summary →",
-    btn_edit: "✏️ Edit",
-    btn_copy: "📋 Copy",
-    btn_submit: "✅ Submit",
-    summary_title: "📋 Summary",
-    qualification_title: "🎯 Qualification Check",
-    qualified: "✅ QUALIFIED",
-    needs_review: "⚠️ REVIEW REQUIRED",
-    success_title: "Successfully Submitted! 🎉",
-    success_body: "Thank you for filling out the questionnaire! We'll review your information and get back to you via WhatsApp within 24–48 hours.",
-    copied: "✅ Summary copied to clipboard!",
-  },
-  de: {
-    title: "Creator Onboarding",
-    subtitle: "Dein Weg zum Erfolg — Los geht's!",
-    welcome_title: "👋 Willkommen!",
-    welcome_body: "Wir freuen uns, dich kennenzulernen. Dieser Fragebogen hilft uns, deine Situation, Ziele und technische Ausstattung zu verstehen, damit wir dir die bestmögliche Unterstützung bieten können.",
-    welcome_honest: "Bitte beantworte alle Fragen ehrlich.",
-    welcome_time: "⏱️ Zeitbedarf: ca. 5–7 Minuten",
-    progress: (s) => `Abschnitt ${s} von 4`,
-    sections: [
-      {
-        title: "👤 Persönliche Basics",
-        fields: [
-          { id: "age", label: "Wie alt bist du?", type: "number", required: true, min: 18, max: 99 },
-          { id: "country", label: "In welchem Land lebst du?", type: "text", required: true },
-          { id: "nationality", label: "Was ist deine Nationalität?", type: "text", required: true },
-          { id: "height_build", label: "Größe & Körperbau", type: "text", hint: "z.B. 1,65m, athletisch", required: true, placeholder: "z.B. 1,70m, schlank" },
-          { id: "tattoos_piercings", label: "Hast du Tattoos oder Piercings?", type: "text", hint: "Falls ja, kurz beschreiben", placeholder: "z.B. kleine Rose am Handgelenk" },
-          { id: "relationship_status", label: "Beziehungsstatus", type: "select", required: true, options: ["Single","In einer Beziehung","Verheiratet","Es ist kompliziert","Möchte ich nicht sagen"] },
-          { id: "living_situation", label: "Wohnsituation", type: "select", required: true, options: ["Alleine","Mit Partner","Mit Mitbewohnern","Bei Eltern","Bei Familie"] },
-        ]
-      },
-      {
-        title: "⏱️ Verfügbarkeit & Commitment",
-        fields: [
-          { id: "hours_per_week", label: "Wie viele Stunden/Woche kannst du investieren?", type: "number", required: true, hint: "Min. 15–20 Std/Woche nötig", min: 0, max: 168 },
-          { id: "productive_times", label: "Wann bist du am produktivsten?", type: "select", required: true, options: ["Morgens (6–12)","Nachmittags (12–18)","Abends (18–24)","Nachts (0–6)","Flexibel"] },
-          { id: "content_days", label: "An welchen Tagen kannst du Content erstellen?", type: "text", required: true, hint: "z.B. Mo–Fr oder täglich", placeholder: "z.B. Mo, Mi, Fr" },
-          { id: "has_job", label: "Hast du einen anderen Job?", type: "select", required: true, options: ["Nein","Ja, Vollzeit","Ja, Teilzeit","Ja, ich studiere"], toggle: { show: ["Ja, Vollzeit","Ja, Teilzeit","Ja, ich studiere"], field: "job_hours" } },
-          { id: "job_hours", label: "Wie viele Stunden/Woche arbeitest du dort?", type: "number", conditional: true, min: 0, max: 80 },
-          { id: "commitment_duration", label: "Wie lange planst du OnlyFans zu betreiben?", type: "select", required: true, options: ["3–6 Monate","6–12 Monate","1 Jahr oder länger","Langfristig (unbegrenzt)"] },
-        ]
-      },
-      {
-        title: "📱 Technische Ausstattung",
-        fields: [
-          { id: "phone_model", label: "Welches Handy hast du?", type: "text", required: true, hint: "Modell und Jahr, z.B. iPhone 13", placeholder: "z.B. iPhone 14 Pro" },
-          { id: "has_ringlight", label: "Hast du ein Ringlicht?", type: "select", required: true, options: ["Ja, habe ich","Nein, aber bereit eines zu kaufen","Nein"], toggle: { show: ["Ja, habe ich"], field: "ringlight_model" } },
-          { id: "ringlight_model", label: "Welches Ringlicht-Modell?", type: "text", conditional: true, placeholder: "z.B. Neewer 18 Zoll" },
-          { id: "has_tripod", label: "Hast du ein Stativ?", type: "select", required: true, options: ["Ja, habe ich","Nein, aber bereit eines zu kaufen","Nein"], toggle: { show: ["Ja, habe ich"], field: "tripod_model" } },
-          { id: "tripod_model", label: "Welches Stativ-Modell?", type: "text", conditional: true, placeholder: "z.B. Manfrotto Compact" },
-          { id: "has_car", label: "Hast du ein Auto?", type: "select", required: true, options: ["Ja","Nein"] },
-          { id: "has_microphone", label: "Hast du ein Mikrofon?", type: "select", required: true, options: ["Ja","Nein"] },
-        ]
-      },
-      {
-        title: "📲 Social Media",
-        fields: [
-          { id: "instagram", label: "Instagram Username", type: "text", hint: "@ nicht erforderlich", placeholder: "z.B. johndoe" },
-          { id: "tiktok", label: "TikTok Username", type: "text", placeholder: "@johndoe" },
-          { id: "twitter", label: "Twitter/X Username", type: "text", placeholder: "@johndoe" },
-          { id: "youtube", label: "YouTube Kanal", type: "text", placeholder: "Kanalname oder URL" },
-          { id: "other_platforms", label: "Andere Plattformen", type: "text", hint: "z.B. Twitch, Snapchat", placeholder: "z.B. Twitch: johndoe" },
-          { id: "social_experience", label: "Social Media Erfahrung", type: "select", required: true, options: ["Keine Erfahrung","Anfänger (wenige Posts)","Mittel (regelmäßige Posts)","Fortgeschritten (aktive Content-Erstellung)","Profi (monetarisiert)"] },
-          { id: "geo_blocking", label: "Geo-Blocking Präferenzen", type: "text", hint: "Länder, die du blocken möchtest (optional)", placeholder: "z.B. Deutschland, Österreich" },
-        ]
-      }
-    ],
-    btn_next: "Weiter →",
-    btn_back: "← Zurück",
-    btn_review: "Zusammenfassung ansehen →",
-    btn_edit: "✏️ Bearbeiten",
-    btn_copy: "📋 Kopieren",
-    btn_submit: "✅ Absenden",
-    summary_title: "📋 Zusammenfassung",
-    qualification_title: "🎯 Qualifikations-Check",
-    qualified: "✅ QUALIFIZIERT",
-    needs_review: "⚠️ PRÜFUNG ERFORDERLICH",
-    success_title: "Erfolgreich abgesendet! 🎉",
-    success_body: "Danke fürs Ausfüllen! Wir melden uns innerhalb von 24–48 Stunden per WhatsApp bei dir.",
-    copied: "✅ Zusammenfassung kopiert!",
-  }
-};
-
+// ─── PAGE: CREATOR FORM ───────────────────────────────────────────────────────
 const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbwbqaIcu-l06cpd5D3yJlsvD-TsFA5XqlMiib2PKk-qvsHYWIhCwSrDKxeExmNNU0Zenw/exec";
+
+const SECTIONS = {
+  en: [
+    {
+      id: "personal",
+      title: "👤 Personal Information",
+      fields: [
+        { id: "name",        label: "Name / Stage name",                        type: "text",     required: true,  placeholder: "E.g. Sofia Rose" },
+        { id: "age",         label: "Age",                                       type: "number",   required: true,  min: 18, max: 99 },
+        { id: "height",      label: "Height",                                    type: "text",     required: true,  placeholder: "E.g. 165 cm" },
+        { id: "nationality", label: "Nationality",                               type: "text",     required: true,  placeholder: "E.g. German" },
+        { id: "location",    label: "Country / City",                            type: "text",     required: true,  placeholder: "E.g. Germany, Berlin" },
+        { id: "job",         label: "Current job / occupation",                  type: "text",     required: false, placeholder: "E.g. Student, Waitress" },
+        { id: "hobbies",     label: "Hobbies or passions",                       type: "textarea", required: false, placeholder: "E.g. fitness, cooking, travel..." },
+        { id: "talents",     label: "Special talents or skills",                 type: "textarea", required: false, placeholder: "Anything counts — dancing, languages, art..." },
+      ]
+    },
+    {
+      id: "goals",
+      title: "🎯 Goals & Availability",
+      fields: [
+        { id: "longterm_goal",   label: "Long-term goal for OnlyFans",                           type: "textarea", required: true,  placeholder: "E.g. financial freedom, full-time creator..." },
+        { id: "income_goal",     label: "Monthly income goal (realistic & dream goal)",          type: "text",     required: true,  placeholder: "E.g. $2,000 realistic / $10,000 dream" },
+        { id: "hours_per_day",   label: "Hours per day you can dedicate to OnlyFans",            type: "select",   required: true,  options: ["1–2 hours","3–4 hours","5–6 hours","7–8 hours","8+ hours"] },
+        { id: "availability",    label: "Daily schedule — when are you most available?",         type: "select",   required: true,  options: ["Morning (6–12)","Afternoon (12–18)","Evening (18–24)","Night (0–6)","Flexible"] },
+        { id: "no_gos",          label: "Absolute No-Gos on OnlyFans and Social Media",         type: "textarea", required: true,  placeholder: "E.g. no face, no specific acts..." },
+      ]
+    },
+    {
+      id: "equipment",
+      title: "📱 Equipment & Setup",
+      fields: [
+        { id: "phone_model",    label: "Phone model & camera quality",                           type: "text",     required: true,  placeholder: "E.g. iPhone 14 Pro" },
+        { id: "equipment_list", label: "Additional equipment you have",                          type: "multicheck", required: false, options: ["Ring light","Tripod","Camera","Microphone","Softbox","None"] },
+        { id: "equipment_gdrive", label: "Equipment photos (Google Drive link)",                 type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share photos of each item via Google Drive or WhatsApp" },
+        { id: "quiet_space",    label: "Do you have a quiet, well-lit space for content?",       type: "select",   required: true,  options: ["Yes","Somewhat","No"] },
+        { id: "room_tour_gdrive", label: "Room tour / shooting location (Google Drive link)",    type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share a room tour video or photos via Google Drive or WhatsApp" },
+        { id: "outfits",        label: "Do you have different outfits ready?",                   type: "select",   required: true,  options: ["Yes, many","Yes, a few","Not yet"] },
+        { id: "outfits_gdrive", label: "Outfit photos (Google Drive link)",                      type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share outfit photos/videos via Google Drive or WhatsApp" },
+      ]
+    },
+    {
+      id: "social",
+      title: "📲 Social Media & Content",
+      fields: [
+        { id: "platforms",       label: "Active platforms we can use for OnlyFans",              type: "multicheck", required: false, options: ["Instagram","TikTok","Twitter/X","Reddit","YouTube","Snapchat","Other"] },
+        { id: "social_links",    label: "Links to all relevant social media accounts",           type: "textarea", required: false, placeholder: "E.g. instagram.com/username, tiktok.com/@username" },
+        { id: "has_onlyfans",    label: "Do you already have an OnlyFans account?",              type: "select",   required: true,  options: ["Yes","No"], toggle: { show: ["Yes"], field: "onlyfans_link" } },
+        { id: "onlyfans_link",   label: "OnlyFans account link",                                 type: "text",     conditional: true, placeholder: "onlyfans.com/yourname" },
+        { id: "existing_content", label: "Do you have existing content we can use?",            type: "select",   required: true,  options: ["Yes, photos & videos","Yes, photos only","Yes, videos only","No"] },
+      ]
+    },
+    {
+      id: "extra",
+      title: "ℹ️ Additional Info",
+      fields: [
+        { id: "agency_before",      label: "Have you worked with an agency before?",             type: "select",   required: true,  options: ["Yes","No"], toggle: { show: ["Yes"], field: "agency_experience" } },
+        { id: "agency_experience",  label: "What was your experience with the agency?",          type: "textarea", conditional: true, placeholder: "Tell us about your experience..." },
+        { id: "anything_else",      label: "Anything else important we should know about you?", type: "textarea", required: false, placeholder: "Feel free to share anything relevant..." },
+      ]
+    }
+  ],
+  de: [
+    {
+      id: "personal",
+      title: "👤 Persönliche Informationen",
+      fields: [
+        { id: "name",        label: "Name / Künstlername",                        type: "text",     required: true,  placeholder: "z.B. Sofia Rose" },
+        { id: "age",         label: "Alter",                                      type: "number",   required: true,  min: 18, max: 99 },
+        { id: "height",      label: "Größe",                                      type: "text",     required: true,  placeholder: "z.B. 165 cm" },
+        { id: "nationality", label: "Nationalität",                               type: "text",     required: true,  placeholder: "z.B. Deutsch" },
+        { id: "location",    label: "Land / Stadt",                               type: "text",     required: true,  placeholder: "z.B. Deutschland, Berlin" },
+        { id: "job",         label: "Aktueller Job / Beschäftigung",              type: "text",     required: false, placeholder: "z.B. Studentin, Kellnerin" },
+        { id: "hobbies",     label: "Hobbys oder Leidenschaften",                 type: "textarea", required: false, placeholder: "z.B. Fitness, Kochen, Reisen..." },
+        { id: "talents",     label: "Besondere Talente oder Fähigkeiten",         type: "textarea", required: false, placeholder: "Alles zählt — Tanzen, Sprachen, Kunst..." },
+      ]
+    },
+    {
+      id: "goals",
+      title: "🎯 Ziele & Verfügbarkeit",
+      fields: [
+        { id: "longterm_goal",   label: "Langfristiges Ziel mit OnlyFans",                       type: "textarea", required: true,  placeholder: "z.B. finanzielle Freiheit, Vollzeit Creator..." },
+        { id: "income_goal",     label: "Monatliches Einkommensziel (realistisch & Traumziel)",  type: "text",     required: true,  placeholder: "z.B. 2.000€ realistisch / 10.000€ Traumziel" },
+        { id: "hours_per_day",   label: "Stunden pro Tag für OnlyFans",                          type: "select",   required: true,  options: ["1–2 Stunden","3–4 Stunden","5–6 Stunden","7–8 Stunden","8+ Stunden"] },
+        { id: "availability",    label: "Tagesablauf — wann bist du am besten verfügbar?",       type: "select",   required: true,  options: ["Morgens (6–12)","Nachmittags (12–18)","Abends (18–24)","Nachts (0–6)","Flexibel"] },
+        { id: "no_gos",          label: "Absolute No-Gos auf OnlyFans und Social Media",        type: "textarea", required: true,  placeholder: "z.B. kein Gesicht, keine bestimmten Handlungen..." },
+      ]
+    },
+    {
+      id: "equipment",
+      title: "📱 Equipment & Setup",
+      fields: [
+        { id: "phone_model",    label: "Handy-Modell & Kameraqualität",                          type: "text",     required: true,  placeholder: "z.B. iPhone 14 Pro" },
+        { id: "equipment_list", label: "Weiteres Equipment das du hast",                         type: "multicheck", required: false, options: ["Ringlicht","Stativ","Kamera","Mikrofon","Softbox","Keines"] },
+        { id: "equipment_gdrive", label: "Equipment-Fotos (Google Drive Link)",                  type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick Fotos von jedem Gerät per Google Drive oder WhatsApp" },
+        { id: "quiet_space",    label: "Hast du einen ruhigen, gut beleuchteten Raum?",          type: "select",   required: true,  options: ["Ja","Teilweise","Nein"] },
+        { id: "room_tour_gdrive", label: "Room Tour / Shooting Location (Google Drive Link)",    type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick ein Room-Tour-Video oder Fotos per Google Drive oder WhatsApp" },
+        { id: "outfits",        label: "Hast du verschiedene Outfits bereit?",                   type: "select",   required: true,  options: ["Ja, viele","Ja, einige","Noch nicht"] },
+        { id: "outfits_gdrive", label: "Outfit-Fotos (Google Drive Link)",                       type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick Outfit-Fotos/Videos per Google Drive oder WhatsApp" },
+      ]
+    },
+    {
+      id: "social",
+      title: "📲 Social Media & Content",
+      fields: [
+        { id: "platforms",       label: "Aktive Plattformen die wir für OnlyFans nutzen können", type: "multicheck", required: false, options: ["Instagram","TikTok","Twitter/X","Reddit","YouTube","Snapchat","Andere"] },
+        { id: "social_links",    label: "Links zu allen relevanten Social-Media-Accounts",       type: "textarea", required: false, placeholder: "z.B. instagram.com/username, tiktok.com/@username" },
+        { id: "has_onlyfans",    label: "Hast du bereits einen OnlyFans-Account?",               type: "select",   required: true,  options: ["Ja","Nein"], toggle: { show: ["Ja"], field: "onlyfans_link" } },
+        { id: "onlyfans_link",   label: "OnlyFans Account Link",                                 type: "text",     conditional: true, placeholder: "onlyfans.com/deinname" },
+        { id: "existing_content", label: "Hast du bestehenden Content den wir nutzen können?",  type: "select",   required: true,  options: ["Ja, Fotos & Videos","Ja, nur Fotos","Ja, nur Videos","Nein"] },
+      ]
+    },
+    {
+      id: "extra",
+      title: "ℹ️ Weitere Infos",
+      fields: [
+        { id: "agency_before",      label: "Hast du schon mit einer Agentur zusammengearbeitet?", type: "select",   required: true,  options: ["Ja","Nein"], toggle: { show: ["Ja"], field: "agency_experience" } },
+        { id: "agency_experience",  label: "Wie war deine Erfahrung mit der Agentur?",            type: "textarea", conditional: true, placeholder: "Erzähl uns von deiner Erfahrung..." },
+        { id: "anything_else",      label: "Gibt es sonst noch etwas Wichtiges das wir wissen sollten?", type: "textarea", required: false, placeholder: "Teile gerne alles Relevante..." },
+      ]
+    }
+  ]
+};
 
 function CreatorFormPage() {
   const [lang, setLang] = useState("en");
   const [section, setSection] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [stage, setStage] = useState("form"); // form | summary | success
+  const [stage, setStage] = useState("form");
   const [submitErr, setSubmitErr] = useState(false);
 
-  const c = FORM_CONTENT[lang];
-  const currentSec = c.sections[section];
+  const sections = SECTIONS[lang];
+  const currentSec = sections[section];
 
   const isVisible = (field) => {
     if (!field.conditional) return true;
-    // Find the parent toggle field
     for (const f of currentSec.fields) {
       if (f.toggle && f.toggle.field === field.id) {
         return f.toggle.show.includes(answers[f.id] || "");
@@ -986,156 +964,185 @@ function CreatorFormPage() {
 
   const validate = () => {
     for (const f of currentSec.fields) {
-      if (f.required && isVisible(f) && !answers[f.id]?.trim()) return false;
+      if (f.required && isVisible(f)) {
+        if (f.type === "multicheck") continue;
+        if (!answers[f.id]?.toString().trim()) return false;
+      }
     }
     return true;
   };
 
   const next = () => {
     if (!validate()) { alert(lang === "en" ? "⚠️ Please fill in all required fields (*)" : "⚠️ Bitte alle Pflichtfelder (*) ausfüllen!"); return; }
-    if (section < c.sections.length - 1) { setSection(s => s + 1); window.scrollTo(0,0); }
-    else { setStage("summary"); window.scrollTo(0,0); }
+    if (section < sections.length - 1) { setSection(s => s + 1); window.scrollTo(0, 0); }
+    else { setStage("summary"); window.scrollTo(0, 0); }
   };
 
-  const back = () => { setSection(s => s - 1); window.scrollTo(0,0); };
+  const back = () => { setSection(s => s - 1); window.scrollTo(0, 0); };
 
   const submit = async () => {
     try {
       const payload = { ...answers, lang, timestamp: new Date().toISOString() };
+      // Convert multicheck arrays to strings for Sheets
+      Object.keys(payload).forEach(k => { if (Array.isArray(payload[k])) payload[k] = payload[k].join(", "); });
       await fetch(GOOGLE_SHEETS_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-      setStage("success"); window.scrollTo(0,0);
+      setStage("success"); window.scrollTo(0, 0);
     } catch(e) { setSubmitErr(true); }
   };
 
   const copyClipboard = () => {
-    let t = `=== CREATOR ONBOARDING ===\n\n`;
-    c.sections.forEach(sec => {
+    let t = lang === "en" ? "=== CREATOR ONBOARDING ===\n\n" : "=== CREATOR ONBOARDING ===\n\n";
+    sections.forEach(sec => {
       t += `${sec.title}\n`;
-      sec.fields.forEach(f => { if (answers[f.id]) t += `${f.label}: ${answers[f.id]}\n`; });
+      sec.fields.forEach(f => {
+        const val = Array.isArray(answers[f.id]) ? answers[f.id].join(", ") : answers[f.id];
+        if (val) t += `${f.label}: ${val}\n`;
+      });
       t += "\n";
     });
-    navigator.clipboard.writeText(t).then(() => alert(c.copied));
+    navigator.clipboard.writeText(t).then(() => alert(lang === "en" ? "✅ Copied to clipboard!" : "✅ In Zwischenablage kopiert!"));
   };
 
-  const fieldStyle = { width: "100%", padding: "11px 14px", border: "2px solid #e2e8f0", borderRadius: 8, fontSize: 14, color: "#2d3748", outline: "none", background: "#fff", fontFamily: "inherit", transition: "border-color 0.2s" };
-  const focusStyle = { borderColor: "#667eea", boxShadow: "0 0 0 3px rgba(102,126,234,0.1)" };
+  const toggleCheck = (fieldId, option) => {
+    const current = answers[fieldId] || [];
+    const updated = current.includes(option) ? current.filter(x => x !== option) : [...current, option];
+    setAnswers(a => ({ ...a, [fieldId]: updated }));
+  };
+
+  const fStyle = { width: "100%", padding: "11px 14px", border: "2px solid #e2e8f0", borderRadius: 8, fontSize: 14, color: "#2d3748", outline: "none", background: "#fff", fontFamily: "inherit", boxSizing: "border-box" };
+  const selStyle = { ...fStyle, cursor: "pointer", appearance: "none", backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: 18, paddingRight: 38 };
 
   const renderField = (f) => {
     if (f.conditional && !isVisible(f)) return null;
-    const val = answers[f.id] || "";
+    const val = answers[f.id];
     const set = (v) => setAnswers(a => ({ ...a, [f.id]: v }));
+
     return (
       <div key={f.id} style={{ marginBottom: 22 }}>
-        <label style={{ display: "block", fontWeight: 600, color: "#2d3748", fontSize: 14, marginBottom: f.hint ? 4 : 8 }}>
+        <label style={{ display: "block", fontWeight: 600, color: "#2d3748", fontSize: 14, marginBottom: f.hint ? 2 : 8 }}>
           {f.label} {f.required && <span style={{ color: "#e53e3e" }}>*</span>}
         </label>
-        {f.hint && <span style={{ display: "block", fontSize: 12, color: "#9b8fc4", fontStyle: "italic", marginBottom: 8 }}>{f.hint}</span>}
-        {f.type === "select" ? (
-          <select value={val} onChange={e => set(e.target.value)} style={{ ...fieldStyle, cursor: "pointer", appearance: "none", backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: 18, paddingRight: 38 }}>
+        {f.hint && (
+          <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 7, padding: "7px 12px", marginBottom: 8, fontSize: 12, color: "#667eea" }}>
+            {f.hint}
+          </div>
+        )}
+        {f.type === "select" && (
+          <select value={val || ""} onChange={e => set(e.target.value)} style={selStyle}>
             <option value="">-- {lang === "en" ? "Please select" : "Bitte wählen"} --</option>
             {f.options.map(o => <option key={o} value={o}>{o}</option>)}
           </select>
-        ) : (
-          <input type={f.type} value={val} onChange={e => set(e.target.value)}
-            placeholder={f.placeholder || ""}
-            min={f.min} max={f.max}
-            onFocus={e => Object.assign(e.target.style, focusStyle)}
-            onBlur={e => { e.target.style.borderColor = "#e2e8f0"; e.target.style.boxShadow = "none"; }}
-            style={fieldStyle} />
+        )}
+        {f.type === "text" && (
+          <input type="text" value={val || ""} onChange={e => set(e.target.value)} placeholder={f.placeholder || ""} style={fStyle} />
+        )}
+        {f.type === "number" && (
+          <input type="number" value={val || ""} onChange={e => set(e.target.value)} min={f.min} max={f.max} style={fStyle} />
+        )}
+        {f.type === "textarea" && (
+          <textarea value={val || ""} onChange={e => set(e.target.value)} placeholder={f.placeholder || ""} style={{ ...fStyle, minHeight: 90, resize: "vertical" }} />
+        )}
+        {f.type === "multicheck" && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
+            {f.options.map(o => {
+              const checked = (answers[f.id] || []).includes(o);
+              return (
+                <div key={o} onClick={() => toggleCheck(f.id, o)} style={{ display: "flex", alignItems: "center", gap: 7, padding: "8px 14px", borderRadius: 8, border: `2px solid ${checked ? "#667eea" : "#e2e8f0"}`, background: checked ? "rgba(102,126,234,0.08)" : "#fff", cursor: "pointer", fontSize: 13, color: checked ? "#667eea" : "#4a5568", fontWeight: checked ? 600 : 400, userSelect: "none", transition: "all 0.15s" }}>
+                  <span style={{ width: 16, height: 16, borderRadius: 4, border: `2px solid ${checked ? "#667eea" : "#cbd5e0"}`, background: checked ? "#667eea" : "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    {checked && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  </span>
+                  {o}
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
     );
   };
 
-  const qualCheck = () => {
-    const d = answers;
-    const checks = lang === "en" ? [
-      [parseInt(d.hours_per_week) >= 15, "Min. 15–20 hrs/week available", "Less than 15 hrs/week"],
-      [!!d.phone_model?.trim(), "Smartphone available", "No smartphone specified"],
-      [d.has_ringlight && !d.has_ringlight.toLowerCase().includes("no") || d.has_tripod && !d.has_tripod.toLowerCase().includes("no"), "Equipment available", "No equipment available"],
-      [d.instagram || d.tiktok || d.twitter || d.youtube, "Social media account available", "No social media accounts"],
-      [d.commitment_duration && !d.commitment_duration.includes("3–6"), "Long-term commitment", "Short commitment"],
-    ] : [
-      [parseInt(d.hours_per_week) >= 15, "Min. 15–20 Std/Woche verfügbar", "Weniger als 15 Std/Woche"],
-      [!!d.phone_model?.trim(), "Smartphone vorhanden", "Kein Smartphone angegeben"],
-      [d.has_ringlight && !d.has_ringlight.toLowerCase().includes("nein") || d.has_tripod && !d.has_tripod.toLowerCase().includes("nein"), "Equipment vorhanden", "Kein Equipment vorhanden"],
-      [d.instagram || d.tiktok || d.twitter || d.youtube, "Social Media Account vorhanden", "Keine Social Media Accounts"],
-      [d.commitment_duration && !d.commitment_duration.includes("3–6"), "Langfristiges Commitment", "Kurzes Commitment"],
-    ];
-    const score = checks.filter(([pass]) => pass).length;
-    const qualified = score >= 4;
-    return { checks, score, qualified };
-  };
-
+  // ── SUCCESS ──
   if (stage === "success") return (
-    <div style={{ maxWidth: 580, margin: "60px auto", padding: "0 24px", textAlign: "center" }}>
-      <div style={{ fontSize: 56, marginBottom: 20 }}>🎉</div>
-      <h2 style={{ color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 28, margin: "0 0 14px" }}>{c.success_title}</h2>
-      <p style={{ color: "#4a5568", fontSize: 15, lineHeight: 1.8, marginBottom: 28 }}>{c.success_body}</p>
-      <div style={{ background: "linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.05))", borderRadius: 14, padding: "20px 24px", border: "1px solid rgba(102,126,234,0.15)", marginBottom: 24, textAlign: "left" }}>
-        <p style={{ color: "#667eea", fontWeight: 600, marginBottom: 10 }}>📸 {lang === "en" ? "Next Steps:" : "Nächste Schritte:"}</p>
-        <p style={{ color: "#4a5568", fontSize: 14 }}>{lang === "en" ? "Please send us photos of your ring light and tripod via WhatsApp (if you have them)." : "Bitte sende uns Fotos deines Ringlichts und Stativs per WhatsApp (falls vorhanden)."}</p>
+    <div style={{ maxWidth: 560, margin: "60px auto", padding: "0 24px", textAlign: "center" }}>
+      <div style={{ fontSize: 52, marginBottom: 16 }}>🎉</div>
+      <h2 style={{ color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 28, margin: "0 0 12px" }}>
+        {lang === "en" ? "Successfully Submitted!" : "Erfolgreich abgesendet!"}
+      </h2>
+      <p style={{ color: "#4a5568", fontSize: 15, lineHeight: 1.8, marginBottom: 24 }}>
+        {lang === "en"
+          ? "Thank you! We'll review your info and get back to you via WhatsApp within 24–48 hours."
+          : "Danke! Wir melden uns innerhalb von 24–48 Stunden per WhatsApp bei dir."}
+      </p>
+      <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 12, padding: "18px 22px", marginBottom: 24, textAlign: "left" }}>
+        <p style={{ color: "#667eea", fontWeight: 600, margin: "0 0 8px", fontSize: 14 }}>
+          📲 {lang === "en" ? "Next Steps:" : "Nächste Schritte:"}
+        </p>
+        <p style={{ color: "#4a5568", fontSize: 13, margin: 0, lineHeight: 1.7 }}>
+          {lang === "en"
+            ? "Please also send us via WhatsApp: equipment photos, room tour video/photos, and outfit photos/videos."
+            : "Bitte schick uns noch per WhatsApp: Equipment-Fotos, Room-Tour-Video/Fotos und Outfit-Fotos/Videos."}
+        </p>
       </div>
-      <button onClick={copyClipboard} style={{ ...saveBtn, margin: "0 auto 12px", justifyContent: "center" }}>{c.btn_copy}</button>
+      <button onClick={copyClipboard} style={{ ...saveBtn, margin: "0 auto 10px", justifyContent: "center" }}>
+        📋 {lang === "en" ? "Copy Summary" : "Zusammenfassung kopieren"}
+      </button>
       <button onClick={() => { setAnswers({}); setSection(0); setStage("form"); }} style={{ ...cancelBtn, display: "block", margin: "0 auto" }}>
         {lang === "en" ? "Submit another response" : "Weitere Antwort absenden"}
       </button>
     </div>
   );
 
-  if (stage === "summary") {
-    const { checks, score, qualified } = qualCheck();
-    return (
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
-          <h2 style={pageTitle}>{c.summary_title}</h2>
-          <div style={{ display: "flex", border: "1px solid rgba(102,126,234,0.3)", borderRadius: 8, overflow: "hidden" }}>
-            {["en","de"].map(l => (
-              <button key={l} onClick={() => setLang(l)} style={{ border: "none", cursor: "pointer", padding: "6px 14px", fontSize: 12, fontWeight: 600, fontFamily: "inherit", background: lang===l ? "linear-gradient(135deg,#667eea,#764ba2)" : "transparent", color: lang===l ? "#fff" : "#667eea" }}>
-                {l === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
-              </button>
-            ))}
-          </div>
-        </div>
-        {c.sections.map((sec, si) => (
-          <div key={si} style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "20px 24px", marginBottom: 14, boxShadow: "0 2px 8px rgba(102,126,234,0.05)" }}>
-            <h3 style={{ margin: "0 0 14px", color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 17 }}>{sec.title}</h3>
-            {sec.fields.filter(f => answers[f.id]).map(f => (
-              <div key={f.id} style={{ display: "flex", gap: 12, padding: "6px 0", borderBottom: "1px solid rgba(102,126,234,0.06)", fontSize: 14 }}>
-                <span style={{ color: "#9b8fc4", fontWeight: 600, minWidth: 160, flexShrink: 0 }}>{f.label}</span>
-                <span style={{ color: "#2d3748" }}>{answers[f.id]}</span>
-              </div>
-            ))}
-          </div>
-        ))}
-        <div style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 8px rgba(102,126,234,0.05)" }}>
-          <h3 style={{ margin: "0 0 14px", color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 17 }}>{c.qualification_title}</h3>
-          <div style={{ display: "inline-block", padding: "8px 18px", borderRadius: 8, fontWeight: 700, fontSize: 14, marginBottom: 14, background: qualified ? "#c6f6d5" : "#fed7d7", color: qualified ? "#22543d" : "#742a2a" }}>
-            {qualified ? c.qualified : c.needs_review} ({score}/5)
-          </div>
-          {checks.map(([pass, ok, fail], i) => (
-            <div key={i} style={{ color: "#4a5568", fontSize: 14, margin: "5px 0" }}>{pass ? "✅" : "⚠️"} {pass ? ok : fail}</div>
+  // ── SUMMARY ──
+  if (stage === "summary") return (
+    <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
+        <h2 style={pageTitle}>📋 {lang === "en" ? "Summary" : "Zusammenfassung"}</h2>
+        <div style={{ display: "flex", border: "1px solid rgba(102,126,234,0.3)", borderRadius: 8, overflow: "hidden" }}>
+          {["en","de"].map(l => (
+            <button key={l} onClick={() => setLang(l)} style={{ border: "none", cursor: "pointer", padding: "6px 14px", fontSize: 12, fontWeight: 600, fontFamily: "inherit", background: lang===l ? "linear-gradient(135deg,#667eea,#764ba2)" : "transparent", color: lang===l ? "#fff" : "#667eea" }}>
+              {l === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
+            </button>
           ))}
         </div>
-        {submitErr && <p style={{ color: "#e05555", textAlign: "center", marginBottom: 12, fontSize: 13 }}>⚠️ Submit failed. Please try again or contact us via WhatsApp.</p>}
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button onClick={() => { setStage("form"); setSection(0); window.scrollTo(0,0); }} style={cancelBtn}>{c.btn_edit}</button>
-          <button onClick={copyClipboard} style={{ ...cancelBtn, color: "#667eea" }}>{c.btn_copy}</button>
-          <button onClick={submit} style={{ ...saveBtn, flex: 1, justifyContent: "center" }}>{c.btn_submit}</button>
-        </div>
       </div>
-    );
-  }
+      {sections.map((sec) => (
+        <div key={sec.id} style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "20px 24px", marginBottom: 14, boxShadow: "0 2px 8px rgba(102,126,234,0.05)" }}>
+          <h3 style={{ margin: "0 0 14px", color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 17 }}>{sec.title}</h3>
+          {sec.fields.filter(f => {
+            const val = answers[f.id];
+            return Array.isArray(val) ? val.length > 0 : val;
+          }).map(f => (
+            <div key={f.id} style={{ display: "flex", gap: 12, padding: "7px 0", borderBottom: "1px solid rgba(102,126,234,0.06)", fontSize: 14 }}>
+              <span style={{ color: "#9b8fc4", fontWeight: 600, minWidth: 180, flexShrink: 0, fontSize: 13 }}>{f.label}</span>
+              <span style={{ color: "#2d3748" }}>{Array.isArray(answers[f.id]) ? answers[f.id].join(", ") : answers[f.id]}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+      {submitErr && <p style={{ color: "#e05555", textAlign: "center", marginBottom: 12, fontSize: 13 }}>⚠️ {lang === "en" ? "Submit failed. Please try again or contact us via WhatsApp." : "Fehler beim Absenden. Bitte erneut versuchen oder per WhatsApp kontaktieren."}</p>}
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <button onClick={() => { setStage("form"); setSection(0); window.scrollTo(0,0); }} style={cancelBtn}>
+          {lang === "en" ? "✏️ Edit" : "✏️ Bearbeiten"}
+        </button>
+        <button onClick={copyClipboard} style={{ ...cancelBtn, color: "#667eea" }}>
+          📋 {lang === "en" ? "Copy" : "Kopieren"}
+        </button>
+        <button onClick={submit} style={{ ...saveBtn, flex: 1, justifyContent: "center" }}>
+          {lang === "en" ? "✅ Submit" : "✅ Absenden"}
+        </button>
+      </div>
+    </div>
+  );
 
-  const progress = ((section + 1) / c.sections.length) * 100;
+  // ── FORM ──
+  const progress = ((section + 1) / sections.length) * 100;
 
   return (
     <div style={{ maxWidth: 680, margin: "0 auto", padding: "32px 24px" }}>
-      {/* Header + lang toggle */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
         <div>
-          <h2 style={pageTitle}>📝 {c.title}</h2>
-          <p style={pageSubtitle}>{c.subtitle}</p>
+          <h2 style={pageTitle}>📝 {lang === "en" ? "Creator Onboarding" : "Creator Onboarding"}</h2>
+          <p style={pageSubtitle}>{lang === "en" ? "Please answer all questions carefully — this helps us create the best strategy for you!" : "Bitte beantworte alle Fragen sorgfältig — das hilft uns, die beste Strategie für dich zu entwickeln!"}</p>
         </div>
         <div style={{ display: "flex", border: "1px solid rgba(102,126,234,0.3)", borderRadius: 8, overflow: "hidden" }}>
           {["en","de"].map(l => (
@@ -1146,25 +1153,17 @@ function CreatorFormPage() {
         </div>
       </div>
 
-      {/* Welcome card */}
-      {section === 0 && (
-        <div style={{ background: "linear-gradient(135deg, #f5f7fa, #e8eaf6)", borderRadius: 14, padding: "22px 24px", marginBottom: 24, borderLeft: "4px solid #667eea" }}>
-          <h3 style={{ color: "#667eea", margin: "0 0 10px", fontFamily: "'Cormorant Garamond', serif", fontSize: 20 }}>{c.welcome_title}</h3>
-          <p style={{ color: "#4a5568", fontSize: 14, lineHeight: 1.7, margin: "0 0 8px" }}>{c.welcome_body}</p>
-          <p style={{ color: "#4a5568", fontSize: 14, fontWeight: 600, margin: "0 0 4px" }}>{c.welcome_honest}</p>
-          <p style={{ color: "#9b8fc4", fontSize: 13, margin: 0 }}>{c.welcome_time}</p>
-        </div>
-      )}
-
-      {/* Progress bar */}
+      {/* Progress */}
       <div style={{ marginBottom: 28 }}>
         <div style={{ height: 6, background: "#e2e8f0", borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
           <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg, #667eea, #764ba2)", transition: "width 0.4s ease", borderRadius: 10 }} />
         </div>
-        <p style={{ textAlign: "center", color: "#667eea", fontSize: 12, fontWeight: 600 }}>{c.progress(section + 1)}</p>
+        <p style={{ textAlign: "center", color: "#667eea", fontSize: 12, fontWeight: 600 }}>
+          {lang === "en" ? `Section ${section + 1} of ${sections.length}` : `Abschnitt ${section + 1} von ${sections.length}`}
+        </p>
       </div>
 
-      {/* Section */}
+      {/* Section card */}
       <div style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "24px", boxShadow: "0 2px 8px rgba(102,126,234,0.05)", marginBottom: 20 }}>
         <div style={{ background: "linear-gradient(135deg, #667eea, #764ba2)", color: "#fff", borderRadius: 8, padding: "12px 16px", marginBottom: 24, fontSize: 15, fontWeight: 600 }}>
           {currentSec.title}
@@ -1172,11 +1171,17 @@ function CreatorFormPage() {
         {currentSec.fields.map(renderField)}
       </div>
 
-      {/* Navigation */}
+      {/* Nav buttons */}
       <div style={{ display: "flex", gap: 10 }}>
-        {section > 0 && <button onClick={back} style={cancelBtn}>{c.btn_back}</button>}
+        {section > 0 && (
+          <button onClick={back} style={cancelBtn}>
+            {lang === "en" ? "← Back" : "← Zurück"}
+          </button>
+        )}
         <button onClick={next} style={{ ...saveBtn, flex: 1, justifyContent: "center" }}>
-          {section < c.sections.length - 1 ? c.btn_next : c.btn_review}
+          {section < sections.length - 1
+            ? (lang === "en" ? "Next →" : "Weiter →")
+            : (lang === "en" ? "Review Summary →" : "Zusammenfassung ansehen →")}
         </button>
       </div>
     </div>
