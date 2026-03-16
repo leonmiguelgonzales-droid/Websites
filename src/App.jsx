@@ -825,58 +825,69 @@ const SECTIONS = {
       id: "personal",
       title: "👤 Personal Information",
       fields: [
-        { id: "name",        label: "Name / Stage name",                        type: "text",     required: true,  placeholder: "E.g. Sofia Rose" },
-        { id: "age",         label: "Age",                                       type: "number",   required: true,  min: 18, max: 99 },
-        { id: "height",      label: "Height",                                    type: "text",     required: true,  placeholder: "E.g. 165 cm" },
-        { id: "nationality", label: "Nationality",                               type: "text",     required: true,  placeholder: "E.g. German" },
-        { id: "location",    label: "Country / City",                            type: "text",     required: true,  placeholder: "E.g. Germany, Berlin" },
-        { id: "job",         label: "Current job / occupation",                  type: "text",     required: false, placeholder: "E.g. Student, Waitress" },
-        { id: "hobbies",     label: "Hobbies or passions",                       type: "textarea", required: false, placeholder: "E.g. fitness, cooking, travel..." },
-        { id: "talents",     label: "Special talents or skills",                 type: "textarea", required: false, placeholder: "Anything counts — dancing, languages, art..." },
+        { id: "name",        label: "Name / Stage name",           type: "text",   required: true,  placeholder: "E.g. Sofia Rose" },
+        { id: "age",         label: "Age",                         type: "number", required: true,  min: 18, max: 99 },
+        { id: "height",      label: "Height",                      type: "text",   required: true,  placeholder: "E.g. 165 cm" },
+        { id: "nationality", label: "Nationality",                  type: "text",   required: true,  placeholder: "E.g. German" },
+        { id: "location",    label: "Country / City",               type: "text",   required: true,  placeholder: "E.g. Germany, Berlin" },
+        { id: "job",         label: "Current job / occupation",     type: "text",   required: false, placeholder: "E.g. Student, Waitress" },
       ]
     },
     {
       id: "goals",
       title: "🎯 Goals & Availability",
       fields: [
-        { id: "longterm_goal",   label: "Long-term goal for OnlyFans",                           type: "textarea", required: true,  placeholder: "E.g. financial freedom, full-time creator..." },
-        { id: "income_goal",     label: "Monthly income goal (realistic & dream goal)",          type: "text",     required: true,  placeholder: "E.g. $2,000 realistic / $10,000 dream" },
-        { id: "hours_per_day",   label: "Hours per day you can dedicate to OnlyFans",            type: "select",   required: true,  options: ["1–2 hours","3–4 hours","5–6 hours","7–8 hours","8+ hours"] },
-        { id: "availability",    label: "Daily schedule — when are you most available?",         type: "select",   required: true,  options: ["Morning (6–12)","Afternoon (12–18)","Evening (18–24)","Night (0–6)","Flexible"] },
-        { id: "no_gos",          label: "Absolute No-Gos on OnlyFans and Social Media",         type: "textarea", required: true,  placeholder: "E.g. no face, no specific acts..." },
+        { id: "longterm_goal", label: "What is your long-term goal for OnlyFans?",                              type: "textarea", required: true,  placeholder: "E.g. financial freedom, quit my job, full-time creator..." },
+        { id: "income_goal",   label: "What monthly income would you like to reach? (realistic & dream goal)", type: "text",     required: true,  placeholder: "E.g. $2,000 realistic / $10,000 dream" },
+        { id: "hours_per_day", label: "How many hours per day can you dedicate to OnlyFans?",                  type: "select",   required: true,  options: ["1–2 hours", "3–4 hours", "5–6 hours", "7–8 hours", "8+ hours"] },
+        { id: "availability",  label: "What is your daily schedule like? When are you most available?",        type: "select",   required: true,  options: ["Morning (6–12)", "Afternoon (12–18)", "Evening (18–24)", "Night (0–6)", "Flexible"] },
+        { id: "no_gos",        label: "What are your absolute No-Gos on OnlyFans and Social Media?",           type: "textarea", required: true,  placeholder: "E.g. no face shown, no specific acts, no certain outfits..." },
+      ]
+    },
+    {
+      id: "usp",
+      title: "✨ USP: What Makes You Unique?",
+      note: "We want to find out what sets you apart from others. Think about everything that's special about you — no matter how small it seems!",
+      fields: [
+        { id: "hobbies",   label: "What are your hobbies, interests or passions?",                                                                                      type: "textarea", required: false, placeholder: "E.g. sports, cooking, gaming, art, travel...", hint: "E.g. sports, cooking, gaming, art, travel..." },
+        { id: "talents",   label: "Do you have special talents or skills that could be used in content? (can really be anything)",                                       type: "textarea", required: false, placeholder: "E.g. dancing, cooking, accent, humor, languages...", hint: "E.g. dancing, cooking, a unique accent, humor, instruments..." },
+        { id: "pets",      label: "Do you have pets? If yes, which ones?",                                                                                              type: "text",     required: false, placeholder: "E.g. dog, cat, rabbit...", hint: "Pets work great in Reels!" },
+        { id: "locations", label: "Do you have access to special locations outside your home?",                                                                          type: "textarea", required: false, placeholder: "E.g. horse stable, pool, boat, gym, restaurant, beach...", hint: "E.g. horse stable, pool, boat, gym, restaurant, nature spots, beach..." },
+        { id: "gadgets",   label: "Do you have special items, gadgets or accessories that could stand out?",                                                             type: "textarea", required: false, placeholder: "E.g. motorbike, sports car, musical instrument, collections...", hint: "E.g. motorbike, sports car, musical instrument, collections..." },
       ]
     },
     {
       id: "equipment",
-      title: "📱 Equipment & Setup",
+      title: "📱 Equipment, Setup & Content Style",
       fields: [
-        { id: "phone_model",    label: "Phone model & camera quality",                           type: "text",     required: true,  placeholder: "E.g. iPhone 14 Pro" },
-        { id: "equipment_list", label: "Additional equipment you have",                          type: "multicheck", required: false, options: ["Ring light","Tripod","Camera","Microphone","Softbox","None"] },
-        { id: "equipment_gdrive", label: "Equipment photos (Google Drive link)",                 type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share photos of each item via Google Drive or WhatsApp" },
-        { id: "quiet_space",    label: "Do you have a quiet, well-lit space for content?",       type: "select",   required: true,  options: ["Yes","Somewhat","No"] },
-        { id: "room_tour_gdrive", label: "Room tour / shooting location (Google Drive link)",    type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share a room tour video or photos via Google Drive or WhatsApp" },
-        { id: "outfits",        label: "Do you have different outfits ready?",                   type: "select",   required: true,  options: ["Yes, many","Yes, a few","Not yet"] },
-        { id: "outfits_gdrive", label: "Outfit photos (Google Drive link)",                      type: "text",     required: false, placeholder: "Paste Google Drive link", hint: "📲 Share outfit photos/videos via Google Drive or WhatsApp" },
+        { id: "phone_model",      label: "What phone do you currently use?",                                                           type: "text",       required: true,  placeholder: "E.g. iPhone 14 Pro", hint: "Model & camera quality, e.g. iPhone 14 Pro, Samsung S23" },
+        { id: "equipment_list",   label: "Do you have any additional equipment?",                                                      type: "multicheck", required: false, options: ["Ring light", "Tripod", "Camera", "Microphone", "Softbox", "None"], hint: "E.g. ring light, tripod, camera, microphone... Please also send a photo of each item via Google Drive or WhatsApp." },
+        { id: "equipment_gdrive", label: "Equipment photos (Google Drive link)",                                                       type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Share photos of each item — include how much it cost" },
+        { id: "quiet_space",      label: "Do you have a quiet and well-lit space for content creation?",                               type: "select",     required: true,  options: ["Yes", "Somewhat", "No"] },
+        { id: "room_tour_gdrive", label: "Room tour / shooting location (Google Drive link)",                                          type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Send a room tour video or photos of where you'd shoot — so we can assess lighting and setup" },
+        { id: "outfits",          label: "Do you have different outfits ready?",                                                       type: "select",     required: true,  options: ["Yes, many", "Yes, a few", "Not yet"] },
+        { id: "outfits_gdrive",   label: "Outfit photos (Google Drive link)",                                                          type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Send photos in your 3 favourite outfits — the ones you feel hottest in" },
+        { id: "content_inspo",    label: "Send 3–4 Reels or creators whose content style you like — so we get a feel for your direction", type: "textarea", required: false, placeholder: "E.g. @creatorname on TikTok, instagram.com/reels/...", hint: "Links or usernames are fine" },
       ]
     },
     {
       id: "social",
       title: "📲 Social Media & Content",
       fields: [
-        { id: "platforms",       label: "Active platforms we can use for OnlyFans",              type: "multicheck", required: false, options: ["Instagram","TikTok","Twitter/X","Reddit","YouTube","Snapchat","Other"] },
-        { id: "social_links",    label: "Links to all relevant social media accounts",           type: "textarea", required: false, placeholder: "E.g. instagram.com/username, tiktok.com/@username" },
-        { id: "has_onlyfans",    label: "Do you already have an OnlyFans account?",              type: "select",   required: true,  options: ["Yes","No"], toggle: { show: ["Yes"], field: "onlyfans_link" } },
-        { id: "onlyfans_link",   label: "OnlyFans account link",                                 type: "text",     conditional: true, placeholder: "onlyfans.com/yourname" },
-        { id: "existing_content", label: "Do you have existing content we can use?",            type: "select",   required: true,  options: ["Yes, photos & videos","Yes, photos only","Yes, videos only","No"] },
+        { id: "platforms",        label: "Which social media platforms are you currently active on that we can use for OnlyFans?",  type: "multicheck", required: false, options: ["Instagram", "TikTok", "Twitter/X", "Reddit", "YouTube", "Snapchat", "Other"], hint: "No private accounts" },
+        { id: "social_links",     label: "Please send the links to all relevant social media accounts",                            type: "textarea",   required: false, placeholder: "E.g. instagram.com/username, tiktok.com/@username, twitter.com/username" },
+        { id: "has_onlyfans",     label: "Do you already have an OnlyFans account?",                                               type: "select",     required: true,  options: ["Yes", "No"], toggle: { show: ["Yes"], field: "onlyfans_link" } },
+        { id: "onlyfans_link",    label: "OnlyFans account link",                                                                  type: "text",       conditional: true, placeholder: "onlyfans.com/yourname" },
+        { id: "existing_content", label: "Do you have any existing content we can use?",                                           type: "select",     required: true,  options: ["Yes, photos & videos", "Yes, photos only", "Yes, videos only", "No"] },
       ]
     },
     {
       id: "extra",
       title: "ℹ️ Additional Info",
       fields: [
-        { id: "agency_before",      label: "Have you worked with an agency before?",             type: "select",   required: true,  options: ["Yes","No"], toggle: { show: ["Yes"], field: "agency_experience" } },
-        { id: "agency_experience",  label: "What was your experience with the agency?",          type: "textarea", conditional: true, placeholder: "Tell us about your experience..." },
-        { id: "anything_else",      label: "Anything else important we should know about you?", type: "textarea", required: false, placeholder: "Feel free to share anything relevant..." },
+        { id: "agency_before",     label: "Have you worked with an agency before?",                                  type: "select",   required: true,  options: ["Yes", "No"], toggle: { show: ["Yes"], field: "agency_experience" } },
+        { id: "agency_experience", label: "If yes, what was your experience?",                                       type: "textarea", conditional: true, placeholder: "Tell us about your experience — what worked, what didn't..." },
+        { id: "anything_else",     label: "Is there anything else important we should know about you?",              type: "textarea", required: false, placeholder: "Feel free to share anything relevant..." },
       ]
     }
   ],
@@ -885,58 +896,69 @@ const SECTIONS = {
       id: "personal",
       title: "👤 Persönliche Informationen",
       fields: [
-        { id: "name",        label: "Name / Künstlername",                        type: "text",     required: true,  placeholder: "z.B. Sofia Rose" },
-        { id: "age",         label: "Alter",                                      type: "number",   required: true,  min: 18, max: 99 },
-        { id: "height",      label: "Größe",                                      type: "text",     required: true,  placeholder: "z.B. 165 cm" },
-        { id: "nationality", label: "Nationalität",                               type: "text",     required: true,  placeholder: "z.B. Deutsch" },
-        { id: "location",    label: "Land / Stadt",                               type: "text",     required: true,  placeholder: "z.B. Deutschland, Berlin" },
-        { id: "job",         label: "Aktueller Job / Beschäftigung",              type: "text",     required: false, placeholder: "z.B. Studentin, Kellnerin" },
-        { id: "hobbies",     label: "Hobbys oder Leidenschaften",                 type: "textarea", required: false, placeholder: "z.B. Fitness, Kochen, Reisen..." },
-        { id: "talents",     label: "Besondere Talente oder Fähigkeiten",         type: "textarea", required: false, placeholder: "Alles zählt — Tanzen, Sprachen, Kunst..." },
+        { id: "name",        label: "Wie ist dein Name / Künstlername?",          type: "text",   required: true,  placeholder: "z.B. Sofia Rose" },
+        { id: "age",         label: "Wie alt bist du?",                           type: "number", required: true,  min: 18, max: 99 },
+        { id: "height",      label: "Wie groß bist du?",                          type: "text",   required: true,  placeholder: "z.B. 165 cm" },
+        { id: "nationality", label: "Was ist deine Nationalität?",                 type: "text",   required: true,  placeholder: "z.B. Deutsch" },
+        { id: "location",    label: "Wo wohnst du aktuell? (Land / Stadt)",        type: "text",   required: true,  placeholder: "z.B. Deutschland, Berlin" },
+        { id: "job",         label: "Was ist dein aktueller Job / Beschäftigung?", type: "text",   required: false, placeholder: "z.B. Studentin, Kellnerin" },
       ]
     },
     {
       id: "goals",
       title: "🎯 Ziele & Verfügbarkeit",
       fields: [
-        { id: "longterm_goal",   label: "Langfristiges Ziel mit OnlyFans",                       type: "textarea", required: true,  placeholder: "z.B. finanzielle Freiheit, Vollzeit Creator..." },
-        { id: "income_goal",     label: "Monatliches Einkommensziel (realistisch & Traumziel)",  type: "text",     required: true,  placeholder: "z.B. 2.000€ realistisch / 10.000€ Traumziel" },
-        { id: "hours_per_day",   label: "Stunden pro Tag für OnlyFans",                          type: "select",   required: true,  options: ["1–2 Stunden","3–4 Stunden","5–6 Stunden","7–8 Stunden","8+ Stunden"] },
-        { id: "availability",    label: "Tagesablauf — wann bist du am besten verfügbar?",       type: "select",   required: true,  options: ["Morgens (6–12)","Nachmittags (12–18)","Abends (18–24)","Nachts (0–6)","Flexibel"] },
-        { id: "no_gos",          label: "Absolute No-Gos auf OnlyFans und Social Media",        type: "textarea", required: true,  placeholder: "z.B. kein Gesicht, keine bestimmten Handlungen..." },
+        { id: "longterm_goal", label: "Was ist dein langfristiges Ziel mit OnlyFans?",                                                    type: "textarea", required: true,  placeholder: "z.B. finanzielle Freiheit, Job kündigen, Vollzeit Creator..." },
+        { id: "income_goal",   label: "Welches monatliche Einkommen möchtest du erreichen? (realistisch & Traumziel)",                    type: "text",     required: true,  placeholder: "z.B. 2.000€ realistisch / 10.000€ Traumziel" },
+        { id: "hours_per_day", label: "Wie viele Stunden pro Tag kannst du für OnlyFans aufwenden?",                                      type: "select",   required: true,  options: ["1–2 Stunden", "3–4 Stunden", "5–6 Stunden", "7–8 Stunden", "8+ Stunden"] },
+        { id: "availability",  label: "Wie sieht dein Tagesablauf aus? Wann bist du am besten verfügbar?",                               type: "select",   required: true,  options: ["Morgens (6–12)", "Nachmittags (12–18)", "Abends (18–24)", "Nachts (0–6)", "Flexibel"] },
+        { id: "no_gos",        label: "Was sind deine absoluten No-Gos auf OnlyFans und Social Media?",                                  type: "textarea", required: true,  placeholder: "z.B. kein Gesicht zeigen, keine bestimmten Handlungen, keine bestimmten Outfits..." },
+      ]
+    },
+    {
+      id: "usp",
+      title: "✨ USP-Findung: Was macht dich einzigartig?",
+      note: "Wir wollen herausfinden, was dich von anderen abhebt. Denk an alles, was besonders an dir ist – egal wie klein es scheint!",
+      fields: [
+        { id: "hobbies",   label: "Was sind deine Hobbys, Interessen oder Leidenschaften?",                                                                              type: "textarea", required: false, placeholder: "z.B. Sport, Kochen, Gaming, Kunst, Reisen...", hint: "z.B. Sport, Kochen, Gaming, Kunst, Reisen..." },
+        { id: "talents",   label: "Hast du besondere Talente oder Fähigkeiten, die man in Content einbauen könnte? (kann wirklich alles sein)",                          type: "textarea", required: false, placeholder: "z.B. Tanzen, Kochen, Akzent, Humor, Sprachen...", hint: "z.B. Tanzen, Kochen, ein besonderer Akzent, Humor, Instrumente..." },
+        { id: "pets",      label: "Hast du Haustiere? Wenn ja, welche?",                                                                                                 type: "text",     required: false, placeholder: "z.B. Hund, Katze, Kaninchen...", hint: "Haustiere funktionieren super in Reels!" },
+        { id: "locations", label: "Hast du Zugang zu besonderen Locations außerhalb deiner Wohnung?",                                                                    type: "textarea", required: false, placeholder: "z.B. Pferdestall, Pool, Boot, Fitnessstudio, Restaurant, Strand...", hint: "z.B. Pferdestall, Pool, Boot, Fitnessstudio, Restaurant, Natur-Spots, Strand..." },
+        { id: "gadgets",   label: "Hast du besondere Gegenstände, Gadgets oder Accessoires, die auffallen könnten?",                                                     type: "textarea", required: false, placeholder: "z.B. Motorrad, Sportwagen, Musikinstrument, Sammlungen...", hint: "z.B. Motorrad, Sportwagen, Musikinstrument, Sammlungen..." },
       ]
     },
     {
       id: "equipment",
-      title: "📱 Equipment & Setup",
+      title: "📱 Equipment, Setup & Content-Stil",
       fields: [
-        { id: "phone_model",    label: "Handy-Modell & Kameraqualität",                          type: "text",     required: true,  placeholder: "z.B. iPhone 14 Pro" },
-        { id: "equipment_list", label: "Weiteres Equipment das du hast",                         type: "multicheck", required: false, options: ["Ringlicht","Stativ","Kamera","Mikrofon","Softbox","Keines"] },
-        { id: "equipment_gdrive", label: "Equipment-Fotos (Google Drive Link)",                  type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick Fotos von jedem Gerät per Google Drive oder WhatsApp" },
-        { id: "quiet_space",    label: "Hast du einen ruhigen, gut beleuchteten Raum?",          type: "select",   required: true,  options: ["Ja","Teilweise","Nein"] },
-        { id: "room_tour_gdrive", label: "Room Tour / Shooting Location (Google Drive Link)",    type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick ein Room-Tour-Video oder Fotos per Google Drive oder WhatsApp" },
-        { id: "outfits",        label: "Hast du verschiedene Outfits bereit?",                   type: "select",   required: true,  options: ["Ja, viele","Ja, einige","Noch nicht"] },
-        { id: "outfits_gdrive", label: "Outfit-Fotos (Google Drive Link)",                       type: "text",     required: false, placeholder: "Google Drive Link einfügen", hint: "📲 Schick Outfit-Fotos/Videos per Google Drive oder WhatsApp" },
+        { id: "phone_model",      label: "Welches Handy nutzt du aktuell?",                                                                          type: "text",       required: true,  placeholder: "z.B. iPhone 14 Pro", hint: "Modell & Kameraqualität, z.B. iPhone 14 Pro, Samsung S23" },
+        { id: "equipment_list",   label: "Hast du weiteres Equipment?",                                                                              type: "multicheck", required: false, options: ["Ringlicht", "Stativ", "Kamera", "Mikrofon", "Softbox", "Keines"], hint: "z.B. Ringlicht, Stativ, Kamera, Mikrofon... Bitte schick auch ein Foto von jedem Gerät per Google Drive oder WhatsApp." },
+        { id: "equipment_gdrive", label: "Equipment-Fotos (Google Drive Link)",                                                                      type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick Fotos von jedem Gerät — schreib dazu wie viel es gekostet hat" },
+        { id: "quiet_space",      label: "Hast du einen ruhigen, gut beleuchteten Raum für Content-Erstellung?",                                     type: "select",     required: true,  options: ["Ja", "Teilweise", "Nein"] },
+        { id: "room_tour_gdrive", label: "Room Tour / Shooting Location (Google Drive Link)",                                                        type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick ein Room-Tour-Video oder Fotos von dort, wo du Content drehen würdest – so können wir Beleuchtung und Setup einschätzen" },
+        { id: "outfits",          label: "Hast du verschiedene Outfits bereit?",                                                                     type: "select",     required: true,  options: ["Ja, viele", "Ja, einige", "Noch nicht"] },
+        { id: "outfits_gdrive",   label: "Outfit-Fotos (Google Drive Link)",                                                                         type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick mir Bilder in deinen 3 Lieblingsoutfits, in denen du dich am heißesten fühlst" },
+        { id: "content_inspo",    label: "Schick mir 3–4 Reels oder Creator, die dir vom Content her gefallen",                                      type: "textarea",   required: false, placeholder: "z.B. @creatorname auf TikTok, instagram.com/reels/...", hint: "Damit wir ein Gefühl dafür bekommen, welche Richtung dir liegt — Links oder Usernamen sind fine" },
       ]
     },
     {
       id: "social",
       title: "📲 Social Media & Content",
       fields: [
-        { id: "platforms",       label: "Aktive Plattformen die wir für OnlyFans nutzen können", type: "multicheck", required: false, options: ["Instagram","TikTok","Twitter/X","Reddit","YouTube","Snapchat","Andere"] },
-        { id: "social_links",    label: "Links zu allen relevanten Social-Media-Accounts",       type: "textarea", required: false, placeholder: "z.B. instagram.com/username, tiktok.com/@username" },
-        { id: "has_onlyfans",    label: "Hast du bereits einen OnlyFans-Account?",               type: "select",   required: true,  options: ["Ja","Nein"], toggle: { show: ["Ja"], field: "onlyfans_link" } },
-        { id: "onlyfans_link",   label: "OnlyFans Account Link",                                 type: "text",     conditional: true, placeholder: "onlyfans.com/deinname" },
-        { id: "existing_content", label: "Hast du bestehenden Content den wir nutzen können?",  type: "select",   required: true,  options: ["Ja, Fotos & Videos","Ja, nur Fotos","Ja, nur Videos","Nein"] },
+        { id: "platforms",        label: "Auf welchen Social-Media-Plattformen bist du aktuell aktiv, die wir für OF nutzen können?",  type: "multicheck", required: false, options: ["Instagram", "TikTok", "Twitter/X", "Reddit", "YouTube", "Snapchat", "Andere"], hint: "Keine privaten Accounts" },
+        { id: "social_links",     label: "Bitte schick die Links zu allen relevanten Social-Media-Accounts",                          type: "textarea",   required: false, placeholder: "z.B. instagram.com/username, tiktok.com/@username, twitter.com/username" },
+        { id: "has_onlyfans",     label: "Hast du bereits einen OnlyFans-Account?",                                                    type: "select",     required: true,  options: ["Ja", "Nein"], toggle: { show: ["Ja"], field: "onlyfans_link" } },
+        { id: "onlyfans_link",    label: "OnlyFans Account Link",                                                                      type: "text",       conditional: true, placeholder: "onlyfans.com/deinname" },
+        { id: "existing_content", label: "Hast du bereits bestehenden Content, den wir nutzen können?",                               type: "select",     required: true,  options: ["Ja, Fotos & Videos", "Ja, nur Fotos", "Ja, nur Videos", "Nein"] },
       ]
     },
     {
       id: "extra",
       title: "ℹ️ Weitere Infos",
       fields: [
-        { id: "agency_before",      label: "Hast du schon mit einer Agentur zusammengearbeitet?", type: "select",   required: true,  options: ["Ja","Nein"], toggle: { show: ["Ja"], field: "agency_experience" } },
-        { id: "agency_experience",  label: "Wie war deine Erfahrung mit der Agentur?",            type: "textarea", conditional: true, placeholder: "Erzähl uns von deiner Erfahrung..." },
-        { id: "anything_else",      label: "Gibt es sonst noch etwas Wichtiges das wir wissen sollten?", type: "textarea", required: false, placeholder: "Teile gerne alles Relevante..." },
+        { id: "agency_before",     label: "Hast du schon mit einer Agentur zusammengearbeitet?",                     type: "select",   required: true,  options: ["Ja", "Nein"], toggle: { show: ["Ja"], field: "agency_experience" } },
+        { id: "agency_experience", label: "Wenn ja, wie war deine Erfahrung?",                                       type: "textarea", conditional: true, placeholder: "Erzähl uns von deiner Erfahrung — was hat funktioniert, was nicht..." },
+        { id: "anything_else",     label: "Gibt es sonst noch etwas Wichtiges, das wir über dich wissen sollten?",   type: "textarea", required: false, placeholder: "Teile gerne alles Relevante..." },
       ]
     }
   ]
@@ -1165,9 +1187,21 @@ function CreatorFormPage() {
 
       {/* Section card */}
       <div style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "24px", boxShadow: "0 2px 8px rgba(102,126,234,0.05)", marginBottom: 20 }}>
-        <div style={{ background: "linear-gradient(135deg, #667eea, #764ba2)", color: "#fff", borderRadius: 8, padding: "12px 16px", marginBottom: 24, fontSize: 15, fontWeight: 600 }}>
-          {currentSec.title}
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ background: "linear-gradient(135deg, #667eea, #764ba2)", color: "#fff", borderRadius: 8, padding: "12px 16px", fontSize: 15, fontWeight: 600, marginBottom: currentSec.note ? 10 : 0 }}>
+            {currentSec.title}
+          </div>
+          {currentSec.note && (
+            <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: "0 0 8px 8px", padding: "10px 14px", fontSize: 13, color: "#667eea", fontStyle: "italic" }}>
+              💡 {currentSec.note}
+            </div>
+          )}
         </div>
+        {currentSec.hint && (
+          <div style={{ background: "rgba(102,126,234,0.06)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 10, padding: "12px 16px", marginBottom: 20, fontSize: 13, color: "#667eea", lineHeight: 1.6 }}>
+            💡 {currentSec.hint}
+          </div>
+        )}
         {currentSec.fields.map(renderField)}
       </div>
 
