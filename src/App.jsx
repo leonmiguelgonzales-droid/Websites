@@ -13,7 +13,6 @@ const TABS = [
   { id: "faqs",        label: "FAQs",        icon: "❓", locked: false },
   { id: "accounts",    label: "Accounts",    icon: "📱", locked: true  },
   { id: "vendors",     label: "Vendors",     icon: "🔧", locked: true  },
-  { id: "creatorform", label: "Creator Form", icon: "📝", locked: false },
 ];
 
 // ─── DEFAULT DATA ─────────────────────────────────────────────────────────────
@@ -21,74 +20,842 @@ const DEFAULT_SOPS = {
   en: [
     {
       id: 1,
-      title: "SOP #1 — Account Problems",
-      subtitle: "Ban · Shadowban · Video Removed",
+      title: "Account Problems",
       category: "Operations",
       version: "3.0",
       updated: "March 2026",
       content: `<h2>1. Account Categorization</h2>
-<p>Every account is categorized based on the number of subscribers it generates.</p>
-<table><thead><tr><th>Category</th><th>Subs per Day</th><th>Value/Day</th><th>Response to Ban</th></tr></thead>
-<tbody>
+<p>Every account is categorized based on the number of subscribers it generates. This category determines how to respond to problems.</p>
+<table><thead><tr><th>Category</th><th>Subs per Day</th><th>Value/Day</th><th>Response to Ban</th></tr></thead><tbody>
 <tr><td>🟢 Low Priority</td><td>0–4 Subs</td><td>$0–$120</td><td>Create new account</td></tr>
 <tr><td>🟡 Medium Important</td><td>5–14 Subs</td><td>$125–$420</td><td>Cost-benefit analysis</td></tr>
 <tr><td>🔴 Very Important</td><td>15–100 Subs</td><td>$375–$3,000</td><td>Unban service immediately</td></tr>
 </tbody></table>
-<div class="warning">⚠ NEVER appeal an account before talking to the manager! An appeal makes the unban significantly more expensive.</div>
+<p>ℹ Value calculation: Subs × $25–30 (average revenue per sub on OnlyFans)</p>
+<h3>Cost-Benefit Calculation for Unbans</h3>
+<table><thead><tr><th>Scenario</th><th>Cost</th><th>Payback Period</th></tr></thead><tbody>
+<tr><td>Unappealed Unban</td><td>approx. $300–$500</td><td>At 10 subs/day: 1–2 days</td></tr>
+<tr><td>Meta Employee Unban (appealed)</td><td>approx. $1,500–$2,000</td><td>At 10 subs/day: ~6 days</td></tr>
+</tbody></table>
+<div class="warning">⚠ NEVER appeal an account before talking to the manager! An appeal makes the unban significantly more expensive ($300 → $1,500+) and slower.</div>
+<p>Rule of thumb: If the account can earn back the unban cost within 10 days, the unban is worth it.</p>
 <h2>2. Account Got Banned</h2>
-<div class="warning">⚠ GOLDEN RULE: DO NOT file an appeal! Talk to the manager first.</div>
-<h3>2.1 🟢 Low Priority (0–4 Subs/Day)</h3>
-<ol><li>Screenshot the ban screen</li><li>Appeal and wait</li><li>If fully banned → Create/buy new account</li><li>Mark as "banned" in account overview</li></ol>
-<h3>2.2 🟡 Medium Important (5–14 Subs/Day)</h3>
-<ol><li>Screenshot the ban screen</li><li>Do NOT appeal</li><li>Run cost-benefit calculation</li><li>If worth it: Contact unban service</li><li>Inform manager via WhatsApp</li></ol>
-<h3>2.3 🔴 Very Important (15–100 Subs/Day)</h3>
-<ol><li>Screenshot the ban screen</li><li>DO NOT APPEAL!</li><li>Check insurance → YES: Contact Liquide. NO: Contact Joker first</li><li>Notify manager IMMEDIATELY</li></ol>
-<h2>3. Shadowban</h2>
-<p><strong>Where to check:</strong> Instagram → Settings → Account Status → "Limited Reach"</p>
-<ol><li>Click "Limited Reach" and check affected content</li><li>File an appeal on affected content</li><li>Wait 2 hours</li><li>No decision → Delete affected content</li></ol>
+<p>Bans happen almost exclusively on Instagram. TikTok, Twitter, and YouTube accounts generally don't get banned.</p>
+<div class="warning">⚠ GOLDEN RULE: DO NOT file an appeal! Talk to the manager first. An appeal massively increases the unban cost.</div>
+<h3>2.1 🟢 Low Priority Account Banned (0–4 Subs/Day)</h3>
+<p>Unban usually not worth it. Replace quickly and move on.</p>
+<ol><li>Take a screenshot of the ban screen + the "More about the rules" screen</li><li>Appeal and wait to see if you get it back or not</li><li>If fully banned → Create or buy a new account (see Vendors SOP)</li><li>Mark account as "banned" in the account overview</li><li>Move on</li></ol>
+<h3>2.2 🟡 Medium Important Account Banned (5–14 Subs/Day)</h3>
+<ol><li>Take a screenshot of the ban screen + the "More about the rules" screen</li><li>Do NOT appeal</li><li>Run cost-benefit calculation (see table above). Example: Account generates 8 subs/day = ~$200–240/day. Unappealed unban costs $300–500 → Paid back in 2 days = WORTH IT.</li><li>If worth it: Contact unban service + get quotes → How fast and how much (unappealed!)</li><li>If not worth it: Create/buy a new account</li><li>Briefly inform manager via WhatsApp</li><li>Update the account overview</li></ol>
+<h3>2.3 🔴 Very Important Account Banned (15–100 Subs/Day)</h3>
+<p>Act immediately. Every day without this account costs serious money.</p>
+<ol><li>Take a screenshot of the ban screen + the "More about the rules" screen</li><li>DO NOT APPEAL!</li><li>Check: Does the account have insurance? If YES: Contact Liquide via the shared Telegram/WhatsApp group. If NO: Contact unban service (unappealed).</li></ol>
+<table><thead><tr><th>Provider</th><th>Speed</th><th>Price (unappealed)</th><th>Price (REP/MA)</th><th>Contact</th></tr></thead><tbody>
+<tr><td>Joker</td><td>2–3h, max 24h</td><td>$300–400</td><td>$2,000+ (fluctuates)</td><td>Telegram → @jokerisafk</td></tr>
+<tr><td>Berdan</td><td>5–7 days</td><td>€500</td><td>~€1,700</td><td>Telegram → @qberdan</td></tr>
+<tr><td>Liquide</td><td>Slow, varies</td><td>Varies</td><td>Varies</td><td>Telegram → @liquidback</td></tr>
+</tbody></table>
+<p>ℹ For very important accounts: Contact Joker first (fastest). If unavailable, reach out to all others in parallel.</p>
+<ol start="4"><li>Notify manager IMMEDIATELY via WhatsApp</li><li>Mark account as "banned" in the overview + date</li><li>Follow up with unban service daily until account is back</li></ol>
+<div class="warning">⚠ Some accounts get banned repeatedly — even with green account status. Nobody is at fault; this is a known IG issue.</div>
+<h2>3. Shadowban (Limited Reach)</h2>
+<p>A shadowban means content is no longer shown to new people. The account isn't suspended, but it's useless without organic reach.</p>
+<h3>3.1 Detecting a Shadowban</h3>
+<p>Account status MUST be checked DAILY. Where to check: <strong>Instagram → Settings → Account Status → "Limited Reach"</strong></p>
+<table><thead><tr><th>Option</th><th>Status</th><th>Action</th></tr></thead><tbody>
+<tr><td>"People who don't follow you"</td><td>🟠 Orange</td><td>ACT IMMEDIATELY! See process below.</td></tr>
+<tr><td>"People under 18"</td><td>🟠 Orange</td><td>IGNORE — We only want to reach 18+ anyway.</td></tr>
+<tr><td>Both options</td><td>🟢 Green</td><td>All good. Continue normally.</td></tr>
+</tbody></table>
+<h3>3.2 Fixing a Shadowban — Step by Step</h3>
+<ol><li>Click on "Limited Reach" and check which content is affected</li><li>Click "File an appeal" on the affected content</li><li>Wait 2 hours for a decision</li><li>Appeal successful? → Done. No decision after 2h? → Delete the affected content. Appeal denied? → Delete the affected content.</li><li>If the account has insurance: Contact Liquide. If no insurance: File an appeal.</li></ol>
+<div class="warning">⚠ Edge case: Sometimes IG shows "Removed Content" instead of allowing you to delete videos. In that case you MUST file an appeal. If denied, limited reach may persist for days to weeks.</div>
+<h3>3.3 Shadowban Escalation: When Appeal Is Denied</h3>
+<p><strong>Step 1:</strong> Check Account Value — calculate daily value from last 30 days link clicks and subs.</p>
+<p><strong>Step 2:</strong> Get Quotes — ask unban services: how much and how long? Cost: approx. $300–500 per account.</p>
+<p><strong>Step 3:</strong> Cost-Benefit Calculation — same as for bans. If account earns back cost within 10 days, it's worth it.</p>
+<p><strong>Recommended Strategy for Recurring Shadowbans:</strong></p>
+<ol><li>Immediately start new replacement accounts and begin posting on them</li><li>Let the affected account rest for approximately 4 weeks</li><li>After 4 weeks: Have the unban service remove the shadowban</li><li>Carefully resume posting and monitor reach closely</li></ol>
+<p>ℹ Why wait 4 weeks? The risk is significantly lower once Instagram's "monitoring phase" has passed. Removing the ban immediately and posting right away often causes the shadowban to return within days.</p>
+<h3>3.4 Shadowban Fix via Unban Service</h3>
+<p>Cost: approx. +/- $700 (without insurance). Recommendation: Only worth it for very important accounts (🔴). For all others, try the free methods first (appeal + delete).</p>
 <h2>4. Video Removed</h2>
-<ol><li>Screenshot the removal notice</li><li>Send screenshot + video to team group</li><li>Insurance? YES: Notify service, no appeal. NO: File appeal</li></ol>
-<h2>5. Quick Reference</h2>
-<table><thead><tr><th>Situation</th><th>Action</th></tr></thead><tbody>
-<tr><td>🟢 Low priority banned</td><td>Screenshot → Appeal → New account if denied</td></tr>
-<tr><td>🟡 Medium banned</td><td>Screenshot → NO appeal → Cost-benefit → Manager</td></tr>
-<tr><td>🔴 Very important banned</td><td>Screenshot → NO APPEAL → Insurance? → Joker → Manager NOW</td></tr>
-<tr><td>Shadowban</td><td>Insurance? → Liquide. No: Appeal → Wait 2h → Delete</td></tr>
-<tr><td>Video removed</td><td>Screenshot + video to group → Insurance? → Service. No: Appeal</td></tr>
+<p>Happens regularly, about 1–2 videos per week. This is normal and not a reason to panic.</p>
+<h3>4.1 Immediate Response</h3>
+<ol><li>Take a screenshot of the removal notice</li><li>Send screenshot + the full affected video to the team group</li><li>Check: Does the account have insurance? If YES: Notify unban service — he fixes it. Do NOT file an appeal! If NO: Always file an appeal (costs nothing, often successful).</li></ol>
+<h3>4.2 Mass Removal (Multiple Videos at Once)</h3>
+<ol><li>Stay calm — IG typically removes a maximum of 9 posts at once</li><li>If the account has insurance → Contact unban service and let him fix it</li><li>If no insurance → File an appeal for all removed posts</li><li>Experience: Out of 9 removed posts, you usually get 7+ back</li><li>Warning: Sometimes additional removals follow hours/days later</li><li>Notify manager</li></ol>
+<h3>4.3 Instagram Strike System</h3>
+<table><thead><tr><th>Threshold</th><th>Consequence</th></tr></thead><tbody>
+<tr><td>1–11 removed posts / year</td><td>No immediate danger, but monitor account status</td></tr>
+<tr><td>12–15 removed posts / year</td><td>WARNING: Account suspension possible! Notify manager immediately.</td></tr>
+</tbody></table>
+<h2>5. Documentation</h2>
+<table><thead><tr><th>What to document?</th><th>How?</th></tr></thead><tbody>
+<tr><td>Screenshot of the problem</td><td>Take screenshot and send to team group</td></tr>
+<tr><td>Affected video</td><td>Send the full video to the group with a screenshot of the in-app notification</td></tr>
+<tr><td>Account name & platform</td><td>So it's clear which account is affected</td></tr>
+<tr><td>Date & time</td><td>When did the problem occur?</td></tr>
+<tr><td>Action taken</td><td>What was done? (Unban service, appeal, new account, etc.)</td></tr>
+</tbody></table>
+<h2>6. Quick Reference</h2>
+<table><thead><tr><th>Situation</th><th>Immediate Action</th></tr></thead><tbody>
+<tr><td>🟢 Low priority banned</td><td>Screenshot → Appeal → If denied: Create/buy new account</td></tr>
+<tr><td>🟡 Medium banned</td><td>Screenshot → DO NOT appeal → Cost-benefit calculation → Inform manager</td></tr>
+<tr><td>🔴 Very important banned</td><td>Screenshot → DO NOT APPEAL → Insurance? Yes: Liquide. No: Joker first → Notify manager IMMEDIATELY</td></tr>
+<tr><td>Shadowban ("People who don't follow you" = orange)</td><td>Insurance? Yes: Contact Liquide. No: Discuss with manager → Appeal → Wait 2–3h → No success: Delete content → If all denied: See Section 3.3</td></tr>
+<tr><td>Video removed (single)</td><td>Screenshot + video to group → Insurance? Yes: Service fixes it, no appeal. No: File appeal</td></tr>
+<tr><td>Mass removal (5+ videos)</td><td>Stay calm → Insurance? Yes: Contact Liquide. No: Appeal all → Notify manager → Wait</td></tr>
 </tbody></table>`
+    },
+    {
+      id: 2,
+      title: "Vendors & Tools",
+      category: "Operations",
+      version: "1.0",
+      updated: "March 2026",
+      content: `<h2>1. Buying Followers</h2>
+<p>We buy fake followers exclusively for Instagram. The purpose is trust-building: Accounts with 0 or very few followers look sketchy, causing people to follow less or not click on links.</p>
+<h3>1.1 Providers</h3>
+<table><thead><tr><th>Provider</th><th>Website</th><th>Price/1K</th><th>Priority</th></tr></thead><tbody>
+<tr><td>MoreThanPanel</td><td>morethanpanel.com</td><td>from $0.31</td><td>⭐ Preferred</td></tr>
+<tr><td>SMMFollows</td><td>smmfollows.com</td><td>Similar</td><td>Alternative</td></tr>
+</tbody></table>
+<p>Recommended option: <strong>Instagram Followers | No Refill | Speed: 5–10K/Day | Max 100K</strong> — approx. $0.31 per 1K. Always choose the cheaper options — don't buy anything over $0.50/1K.</p>
+<h3>1.2 What Do We Buy Followers For?</h3>
+<p><strong>A) Funnel Accounts</strong> — Private accounts that redirect people from TikTok or other IG accounts to OnlyFans. A funnel account must look like this:</p>
+<ol><li>Set to private</li><li>7 posts published (looks authentic)</li><li>500–900 purchased followers</li><li>Following 20–30 people</li><li>Authentic, believable bio</li><li>Profile picture set</li><li>Funnel link in bio (Bouncy.ai or Link.me)</li></ol>
+<div class="warning">⚠ When buying followers, the account MUST be set to PUBLIC until all followers have arrived! Switch back to private afterwards. Delivery time: Usually 8–24 hours.</div>
+<p><strong>B) Reel Accounts (new accounts)</strong> — For brand new reel accounts, we sometimes buy 150–200 followers so the account doesn't start at zero.</p>
+<h2>2. Buying Instagram Accounts</h2>
+<p>We generally always buy IG accounts rather than creating them manually. Creating accounts usually takes a very long time and frequently results in errors.</p>
+<h3>2.1 Providers</h3>
+<table><thead><tr><th>Provider</th><th>Contact</th><th>Price/Account</th><th>Notes</th></tr></thead><tbody>
+<tr><td>AccsMarket</td><td>accsmarket.com</td><td>$3–7</td><td>⭐ Preferred</td></tr>
+<tr><td>WhatsApp Contact</td><td>+44 7926 386960</td><td>~$2</td><td>Communicate exactly what you need</td></tr>
+</tbody></table>
+<h3>2.2 Which Accounts to Buy?</h3>
+<p>Always buy <strong>aged accounts (1–2 years old)</strong>. The country/IP must match the creator's target audience:</p>
+<table><thead><tr><th>Creator Target Audience</th><th>Buy Account From</th></tr></thead><tbody>
+<tr><td>USA IP</td><td>Aged USA Accounts (1–2 years old)</td></tr>
+<tr><td>Germany IP</td><td>Aged German Accounts (1–2 years old)</td></tr>
+<tr><td>Other Countries</td><td>Aged accounts from the respective country</td></tr>
+</tbody></table>
+<h3>2.3 Buying Criteria</h3>
+<ol><li>Only buy aged accounts (1–2 years old)</li><li>Check seller reviews carefully</li><li>Don't spend more than $5–7 per account. $3–5 is optimal.</li><li>Email provider: Prefer Outlook/Hotmail (Gmail accounts often have login issues or are already banned)</li></ol>
+<div class="warning">⚠ Purchased accounts always come with an email. Prefer Outlook/Hotmail! Gmail or other providers often cause problems.</div>
+<p>When purchasing multiple accounts (e.g. 5), you receive a text file with all login data. This file is often messy — the data needs to be organized properly. Video tutorial: <strong>https://www.loom.com/share/b87b7e24bbfa4adca963ccdd15e42b38</strong></p>
+<h2>3. Unban Services</h2>
+<p>Details on when and how to use unban services are in SOP #1. Contact overview only here.</p>
+<table><thead><tr><th>Provider</th><th>Contact</th><th>Price (unappealed)</th><th>Price (REP/MA)</th><th>Speed</th></tr></thead><tbody>
+<tr><td>Joker</td><td>Telegram: @jokerisafk</td><td>$300–400</td><td>$2,000+ (fluctuates)</td><td>2–3h, max 24h</td></tr>
+<tr><td>Berdan</td><td>Telegram: @qberdan</td><td>€500</td><td>~€1,700</td><td>5–7 days</td></tr>
+<tr><td>Liquide</td><td>Telegram: @liquidback</td><td>Varies</td><td>Varies</td><td>Slow, varies</td></tr>
+</tbody></table>
+<h2>4. Link Services & Funnel Tools</h2>
+<table><thead><tr><th>Tool</th><th>Usage</th><th>Access</th></tr></thead><tbody>
+<tr><td>Bouncy.ai</td><td>Funnel links for OnlyFans</td><td>Access via Leon</td></tr>
+<tr><td>Link.me</td><td>Funnel links for OnlyFans</td><td>Access via Leon</td></tr>
+<tr><td>GoDaddy</td><td>Buy domains for new models</td><td>See Onboarding SOP</td></tr>
+<tr><td>StayUndercover</td><td>Buy domains for new models</td><td>See Onboarding SOP</td></tr>
+</tbody></table>
+<div class="warning">⚠ When checking stats, creating new links, or making changes to existing links — handle EVERYTHING through Leon.</div>
+<h2>5. Other Tools</h2>
+<h3>5.1 SMS Verification</h3>
+<table><thead><tr><th>Service</th><th>Website</th><th>Usage</th></tr></thead><tbody>
+<tr><td>SMSPool</td><td>smspool.net</td><td>Virtual phone numbers for verification</td></tr>
+</tbody></table>
+<div class="warning">⚠ Do NOT store login credentials in this document! All access credentials are managed centrally in a password manager or protected document.</div>
+<h2>6. Quick Reference</h2>
+<table><thead><tr><th>What do I need?</th><th>Where?</th><th>Price</th></tr></thead><tbody>
+<tr><td>Fake followers (IG)</td><td>morethanpanel.com</td><td>from $0.31 / 1K</td></tr>
+<tr><td>IG account (preferred)</td><td>accsmarket.com</td><td>$3–7 / account</td></tr>
+<tr><td>IG account (alternative)</td><td>WhatsApp: +44 7926 386960</td><td>~$2 / account</td></tr>
+<tr><td>Unban (unappealed)</td><td>Joker: @jokerisafk</td><td>$300–400</td></tr>
+<tr><td>Unban (REP/MA)</td><td>Contact all providers</td><td>$1,500–2,000+</td></tr>
+<tr><td>Funnel links</td><td>Bouncy.ai / Link.me (via Leon)</td><td>—</td></tr>
+<tr><td>Domain (new model)</td><td>GoDaddy / StayUndercover</td><td>Varies</td></tr>
+<tr><td>SMS verification</td><td>smspool.net</td><td>Varies</td></tr>
+</tbody></table>`
+    },
+    {
+      id: 3,
+      title: "Task Management",
+      category: "Operations",
+      version: "1.0",
+      updated: "March 2026",
+      content: `<h2>1. Why Asana?</h2>
+<p>Our problem: Tasks are discussed in WhatsApp but not tracked. Especially growth tasks and spontaneous tasks get lost because they're not written down anywhere. Routine tasks work fine, but everything beyond that gets forgotten quickly.</p>
+<p>The solution: Asana is our central task system. All tasks that go beyond routine end up there — no exceptions.</p>
+<div class="warning">⚠ WhatsApp is ONLY for quick communication and urgent short messages. Tasks are NO LONGER assigned or tracked via WhatsApp.</div>
+<h2>2. Asana Structure</h2>
+<p>We use ONE central board for the entire team — not one board per creator, but everything in one place so nobody has to check 5 different boards.</p>
+<h3>2.1 Columns (Sections)</h3>
+<table><thead><tr><th>Column</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>📋 To Do</td><td>New tasks that haven't been started yet</td></tr>
+<tr><td>🔧 In Progress</td><td>Tasks currently being worked on</td></tr>
+<tr><td>❓ Needs Decision</td><td>Task is unclear or you're unsure what to do. Reviewed daily.</td></tr>
+<tr><td>⏳ Waiting for…</td><td>Waiting on someone else (creator, unban service, manager, etc.)</td></tr>
+<tr><td>✅ Done</td><td>Completed. Cleaned up at the end of the week.</td></tr>
+</tbody></table>
+<div class="warning">⚠ The "Needs Decision" column is the most important difference from before. Instead of letting a task sit, it gets parked here and reviewed daily. Nothing gets lost anymore.</div>
+<h3>2.2 Tags / Labels</h3>
+<p><strong>Creator Tags:</strong> One tag per creator (e.g. [Creator 1], [Creator 2]) plus a "General" tag for tasks that don't relate to a specific creator.</p>
+<table><thead><tr><th>Tag</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>🔴 Urgent</td><td>Must be done today or ASAP</td></tr>
+<tr><td>🟡 Normal</td><td>Has a deadline but not immediate</td></tr>
+<tr><td>🟢 Growth</td><td>Improvement / optimization — important but not urgent. Done when there's time.</td></tr>
+<tr><td>🔁 Routine</td><td>Recurring task (daily/weekly)</td></tr>
+</tbody></table>
+<h2>3. What a Task Looks Like</h2>
+<table><thead><tr><th>Field</th><th>Description</th><th>Example</th></tr></thead><tbody>
+<tr><td>Title</td><td>Short and clear — what needs to be done?</td><td>"Analyze IG profile Model X"</td></tr>
+<tr><td>Assignee</td><td>Who does it?</td><td>"@Leon"</td></tr>
+<tr><td>Creator Tag</td><td>For which creator?</td><td>"Model X"</td></tr>
+<tr><td>Type Tag</td><td>Urgent / Normal / Growth / Routine</td><td>"🟢 Growth"</td></tr>
+<tr><td>Deadline</td><td>When must it be done?</td><td>"03/15/2026"</td></tr>
+<tr><td>Description</td><td>Details, context, links (optional)</td><td>"Check bio, highlights, posting times"</td></tr>
+</tbody></table>
+<div class="warning">⚠ A task without an assignee is not a task. If it's not clear who does it, it will NOT get done.</div>
+<h2>4. Daily Asana Routine</h2>
+<h3>Phase 1: Morning (2–3 minutes)</h3>
+<ol><li>Open Asana and check "My Tasks"</li><li>What's due today? What has a deadline?</li><li>Are there tasks in "Needs Decision" that need to be discussed?</li></ol>
+<h3>Phase 2: During the day</h3>
+<ol><li>When starting a task → Move to "In Progress"</li><li>When finished → Move to "Done"</li><li>When unsure what to do → Move to "Needs Decision" + add comment why</li><li>When waiting on someone → Move to "Waiting for…" + comment who</li></ol>
+<h3>Phase 3: Evening (2 minutes)</h3>
+<ol><li>What was completed today? Update status if not done yet</li><li>Any tasks due tomorrow?</li><li>New tasks that came up during the day → Add to Asana</li></ol>
+<p>ℹ Total time per day: approx. 5–7 minutes.</p>
+<h2>5. The WhatsApp → Asana Rule</h2>
+<p>This is the most important rule in this SOP:</p>
+<div class="warning">⚠ When a task is discussed in WhatsApp, it must be entered into Asana IMMEDIATELY.</div>
+<ol><li>In WhatsApp you discuss WHAT needs to be done and make a decision</li><li>The person taking the task enters it into Asana immediately (title, assignee, deadline, tags)</li><li>Confirm in WhatsApp: "It's in Asana"</li></ol>
+<p><strong>What happens if it stays in WhatsApp?</strong> Then exactly what's been happening will happen: It gets lost. The message scrolls up, nobody thinks about it, the task is forgotten.</p>
+<div class="warning">⚠ If something is only in WhatsApp and not in Asana, it doesn't exist as a task. No Asana entry = No task.</div>
+<h2>6. "Needs Decision" — The Anti-Forgetting System</h2>
+<ol><li>You have a task but don't know exactly what to do</li><li>Do NOT let it sit. Instead: Move task to "Needs Decision"</li><li>Add a comment explaining what exactly is unclear</li><li>The manager or responsible team member checks this column DAILY</li><li>Decision is made — via Asana comment, WhatsApp message, or voice note</li><li>Task moves back to "To Do" or "In Progress"</li></ol>
+<h2>7. Task Types</h2>
+<table><thead><tr><th>Type</th><th>Description</th><th>How to handle</th></tr></thead><tbody>
+<tr><td>🔁 Routine</td><td>Daily tasks every team member knows</td><td>Can be in Asana but don't have to be.</td></tr>
+<tr><td>🔴 Urgent</td><td>Must be done immediately (e.g. account banned)</td><td>Immediately in Asana + WhatsApp message to those involved.</td></tr>
+<tr><td>🟡 Normal</td><td>Has a clear deadline but not due immediately</td><td>In Asana with deadline. Done in normal workflow.</td></tr>
+<tr><td>🟢 Growth</td><td>Improvements and optimizations</td><td>In Asana with "Growth" tag. Done when routine and normal tasks are completed.</td></tr>
+</tbody></table>
+<div class="warning">⚠ Growth tasks are the tasks that get lost the fastest — that's exactly why they must be in Asana.</div>
+<h2>8. Daily Control</h2>
+<p>For the system to work, someone must check the board daily. Without control, Asana will fall asleep again.</p>
+<p><strong>Daily Check:</strong></p>
+<ul><li>"Needs Decision" column: Are there tasks that need a decision?</li><li>"To Do" column: Are all tasks assigned to someone?</li><li>"Waiting for…" column: Does anything need a follow-up?</li><li>Overdue tasks: Are there tasks past their deadline?</li><li>New tasks: Were things discussed in WhatsApp today that aren't in Asana yet?</li></ul>
+<div class="warning">⚠ This check takes 5 minutes. If it's not done, Asana will die within 2 weeks.</div>
+<h2>9. Quick Reference: The Golden Rules</h2>
+<table><thead><tr><th>#</th><th>Rule</th></tr></thead><tbody>
+<tr><td>1</td><td>No Asana entry = No task. If it's not in Asana, it doesn't exist.</td></tr>
+<tr><td>2</td><td>Every task has an assignee. Without a name, nothing gets done.</td></tr>
+<tr><td>3</td><td>Unsure? → "Needs Decision". Never let it sit.</td></tr>
+<tr><td>4</td><td>WhatsApp task? → Enter in Asana immediately + confirm "It's in Asana."</td></tr>
+<tr><td>5</td><td>Open Asana in the morning, update status in the evening. Every day. 5 minutes.</td></tr>
+<tr><td>6</td><td>Daily control by manager or trusted team member.</td></tr>
+<tr><td>7</td><td>Growth tasks belong in Asana — otherwise they will ALWAYS be forgotten.</td></tr>
+</tbody></table>`
+    },
+    {
+      id: 4,
+      title: "Marketing MA",
+      category: "Operations",
+      version: "1.0",
+      updated: "March 2026",
+      content: `<h2>1. Role Overview</h2>
+<p>The Marketing MA is responsible for the entire content process from idea generation to the finished video. Once fully onboarded, they manage 2 creators simultaneously.</p>
+<h3>Core Responsibilities</h3>
+<table><thead><tr><th>Area</th><th>What exactly?</th></tr></thead><tbody>
+<tr><td>Research</td><td>Find viral videos and trends that match the model</td></tr>
+<tr><td>Create content lists</td><td>Detailed instructions for each video (text, acting, location, outfit, description)</td></tr>
+<tr><td>Live feedback</td><td>Monitor and correct while the model is filming</td></tr>
+<tr><td>Editing feedback</td><td>Review edited videos and request changes</td></tr>
+<tr><td>Model communication</td><td>Help models with questions and problems, coordinate shoot days</td></tr>
+<tr><td>Manage IG accounts</td><td>Manage 2 reel accounts: post, comments, stories, check account status</td></tr>
+</tbody></table>
+<h3>Tools Used Daily</h3>
+<table><thead><tr><th>Tool</th><th>What for?</th></tr></thead><tbody>
+<tr><td>Instagram</td><td>Research, posting, engagement, account status checks</td></tr>
+<tr><td>Telegram</td><td>Research groups, sending content lists, receiving videos</td></tr>
+<tr><td>WhatsApp</td><td>Team communication, model communication</td></tr>
+<tr><td>CreatorHero</td><td>Check subs and link clicks, performance data</td></tr>
+<tr><td>Asana</td><td>Task management (see SOP #3)</td></tr>
+</tbody></table>
+<h2>2. Daily Routine</h2>
+<h3>Phase 1: Morning — Start & Overview</h3>
+<ol><li>Open Asana: What's due today? (2–3 min)</li><li>Check WhatsApp: New messages from models or team?</li><li>Open CreatorHero: Check subs and link clicks from yesterday</li><li>Check video performance (see Section 2.1)</li><li>Check account status: Both IG accounts for bans/shadowbans</li></ol>
+<h3>2.1 How to Check Video Performance</h3>
+<p><strong>Accounts you manage (on your phone):</strong> Open Instagram Insights and check key metrics: Where did people drop off? What's the average watch time?</p>
+<p><strong>Accounts you don't manage yourself:</strong> Compare views of recent videos with the account's average. Example: If an account normally gets 2,000 views and a video only has 500 views after 2–3 days, it performed significantly below average.</p>
+<h3>Phase 2: Late Morning — Create Content Lists</h3>
+<p>This is the most important and creative task of the day. Do it in the morning when focus is highest.</p>
+<ol><li>Open research from previous evening (Telegram research groups)</li><li>Select videos that match the model</li><li>Write content list (see template in Section 3)</li><li>Per model: At least 4–5 videos per list (2 videos/day + buffer)</li><li>Send finished list to the lists group on Telegram/WhatsApp</li></ol>
+<p>ℹ 2 videos per day are needed per model. With 2 models = 4 videos per day minimum. If Sunday is off, plan for 5 videos per day.</p>
+<h3>Phase 3: Live Feedback (When Model Is Filming)</h3>
+<p>Live feedback doesn't happen every day — only when the model films (2–3x/week). Coordinate shoot days in advance.</p>
+<ol><li>Model sends first takes via video call or message</li><li>Check if acting, text, location, outfit match the brief</li><li>Give corrective feedback if something doesn't fit</li><li>Make sure the model films all videos from the list</li></ol>
+<div class="warning">⚠ Live feedback is critical for video quality. Without feedback, models often film videos that are unusable.</div>
+<h3>Phase 4: Afternoon — Editing Feedback & Accounts</h3>
+<p><strong>Editing Feedback:</strong></p>
+<ol><li>Review edited videos (usually from the past few days)</li><li>Give feedback: What needs to change?</li><li>Approve final video when it's good</li></ol>
+<p><strong>Manage IG Accounts:</strong></p>
+<ol><li>Post videos sent by the other MA on Telegram (video + caption)</li><li>Copy and paste caption</li><li>Reply to comments</li><li>Post stories</li><li>Check account status again (if missed in the morning)</li></ol>
+<h3>Phase 5: Evening — Research & Wrap Up</h3>
+<p>Research is recommended in the evening so you can start with the content list first thing the next morning.</p>
+<ol><li>Research intentionally on Instagram (FYP must be properly configured!)</li><li>Send good videos to the appropriate Telegram research group</li><li>About 30–60 minutes per session, maximum 90 minutes</li><li>Research doesn't have to be done every day — as long as there's enough material for the next content list</li></ol>
+<p><strong>Wrap Up:</strong></p>
+<ul><li>Model communication: Answer last questions, discuss next shoot day</li><li>Work on growth tasks if time allows</li><li>Update Asana: Update status of all tasks (2 min)</li></ul>
+<h2>3. Content List — Template</h2>
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody>
+<tr><td>Text</td><td>The spoken text or text displayed in the video</td></tr>
+<tr><td>Acting</td><td>What should the model do? (Facial expressions, gestures, movement)</td></tr>
+<tr><td>Location</td><td>Where to film? (Bedroom, kitchen, gym, outside etc.)</td></tr>
+<tr><td>Outfit</td><td>What should the model wear?</td></tr>
+<tr><td>Description/Caption</td><td>The caption posted under the video</td></tr>
+</tbody></table>
+<p><strong>Example Format (Telegram/WhatsApp):</strong></p>
+<p>1st TikTok - List @[Model Name]<br/>Text: [Spoken text]<br/>Acting: [What the model should do]<br/>Location: [Where]<br/>Outfit: [What to wear]<br/>Description: [Caption]</p>
+<div class="warning">⚠ Tip: If a scene is hard to explain, record a short video via Loom and show the model exactly what you mean. Or send reference images/videos for specific scenes.</div>
+<h2>4. Weekly Tasks</h2>
+<table><thead><tr><th>Task</th><th>Details</th></tr></thead><tbody>
+<tr><td>Performance brainstorming</td><td>What can we improve this/next week? (Outfits, locations, video types, acting, posting strategy)</td></tr>
+<tr><td>Refill research</td><td>Make sure there's enough research material in the Telegram groups for next week</td></tr>
+<tr><td>Account status review</td><td>Go through all accounts: Any issues? Strikes? Performance drops?</td></tr>
+<tr><td>Video analysis (Top & Flop)</td><td>Analyze best and worst videos of the week using the Account Analysis Sheet. Identify patterns.</td></tr>
+</tbody></table>
+<h2>5. Common Mistakes & How to Avoid Them</h2>
+<h3>5.1 Research: FYP Not Properly Built</h3>
+<p>New MAs often spend 3–4 hours on research and find barely any good videos. An experienced MA needs 30–60 minutes max.</p>
+<p><strong>The cause:</strong> The FYP isn't properly configured. The MA watches personal content during research, manipulating their FYP.</p>
+<p><strong>The solution:</strong> Use the research account ONLY for research — never for personal use. Only watch/like videos that match the model's content style. It takes several days for the FYP to adjust.</p>
+<div class="warning">⚠ The FYP is the most important tool for efficient research. Once it's "polluted," it takes a long time to fix. NEVER pursue personal interests on the research account.</div>
+<h3>5.2 Content Lists: Not Detailed Enough</h3>
+<p>Lists are too vague, the model doesn't know exactly what to do. Result: Bad videos that need to be re-filmed.</p>
+<p><strong>The solution:</strong> Every field must be specific and unambiguous. Not "be sexy" but "lean casually against the wall, look into the camera, smile briefly." Send reference images or a Loom video if needed.</p>
+<h3>5.3 Forgetting to Check Account Status</h3>
+<p>Shadowbans are discovered too late and the account loses reach for days without anyone noticing. Account status check is part of the morning routine — check EVERY day.</p>
+<h3>5.4 Too Little Model Communication</h3>
+<p>Communicate proactively. Don't wait for the model to ask — reach out yourself: "How was the shoot?", "When are you filming next?"</p>
+<h3>5.5 Video Selection During Research</h3>
+<p>New MAs don't always understand why a video went viral or why a viral video doesn't fit their model. Get feedback from the manager or experienced MAs. Ask questions: "Why does this video work?"</p>
+<h2>6. Quick Reference: Daily Schedule</h2>
+<table><thead><tr><th>Phase</th><th>Tasks</th></tr></thead><tbody>
+<tr><td>Morning</td><td>Asana check → WhatsApp check → CreatorHero numbers → Check video performance → Account status</td></tr>
+<tr><td>Late Morning</td><td>Create content list(s) → Send to lists group</td></tr>
+<tr><td>When model films</td><td>Give live feedback (not every day — only when model films, 2–3x/week)</td></tr>
+<tr><td>Afternoon</td><td>Editing feedback → Manage IG accounts (post, comments, stories)</td></tr>
+<tr><td>Evening</td><td>Research (30–90 min) → Model communication → Growth tasks → Update Asana</td></tr>
+<tr><td>Weekly</td><td>Performance brainstorming → Video analysis with Analysis Sheet → Account review</td></tr>
+</tbody></table>
+<h2>7. Related SOPs</h2>
+<table><thead><tr><th>SOP</th><th>Relevance</th></tr></thead><tbody>
+<tr><td>SOP #1 — Account Problems</td><td>When an account gets banned, shadowbanned, or videos are removed</td></tr>
+<tr><td>SOP #2 — Vendors & Tools</td><td>Where to buy followers, accounts etc.</td></tr>
+<tr><td>SOP #3 — Task Management</td><td>How Asana is used, WhatsApp → Asana rule</td></tr>
+</tbody></table>`
+    }
+,
+    {
+      id: 5,
+      title: "New Model Onboarding",
+      category: "Operations",
+      version: "1.0",
+      updated: "March 2026",
+      content: `<h2>Complete Onboarding Checklist</h2>
+<table><thead><tr><th>Task</th><th>Responsible</th><th>Deadline</th></tr></thead><tbody>
+<tr><td>WhatsApp groups created (Traffic + Backend)</td><td>Backend</td><td>Day 1</td></tr>
+<tr><td>Welcome messages sent (Owner -> MM -> Assistant)</td><td>All</td><td>Day 1</td></tr>
+<tr><td>Onboarding questionnaire sent (website)</td><td>MM / Assistant</td><td>Day 1</td></tr>
+<tr><td>Questionnaire fully returned</td><td>Model</td><td>Day 1-2</td></tr>
+<tr><td>Tasks sent (Equipment, Room Tour, Outfits, Reels, AI photos, Link image)</td><td>Leon</td><td>After questionnaire</td></tr>
+<tr><td>All tasks received from model</td><td>Model</td><td>Day 1-2</td></tr>
+<tr><td>4 IG accounts purchased</td><td>Leon</td><td>Day 1-2</td></tr>
+<tr><td>Accounts distributed to team (1x MM, 3x VA)</td><td>Manuel / MM</td><td>Day 1-2</td></tr>
+<tr><td>Link landing page created per account</td><td>MM / VA</td><td>By Day 5</td></tr>
+<tr><td>Deep links + 18+ verification configured</td><td>MM / VA</td><td>By Day 5</td></tr>
+<tr><td>Background image for links organized</td><td>MM</td><td>By Day 5</td></tr>
+<tr><td>Marketing concept completed (5 steps)</td><td>MM + Team</td><td>Day 1-3</td></tr>
+<tr><td>First content list sent to model</td><td>MM</td><td>Day 2-5</td></tr>
+<tr><td>Warming process started</td><td>MM / VA</td><td>Day 1-2</td></tr>
+<tr><td>Funnel check completed</td><td>Leon</td><td>Day 2-3</td></tr>
+<tr><td>Asana project created</td><td>MM</td><td>Day 1-2</td></tr>
+<tr><td>Everyone logged into accounts</td><td>MM / VA</td><td>Day 1-2</td></tr>
+<tr><td>Go-live confirmed</td><td>Manuel / MM</td><td>From Day 7+</td></tr>
+</tbody></table>
+<h2>Phase 1 - Communication & Initial Setup</h2>
+<h3>1.1 Create WhatsApp Groups</h3>
+<table><thead><tr><th>Group</th><th>Name Format</th></tr></thead><tbody>
+<tr><td>Traffic / Marketing</td><td>[Modelname] Traffic - Perlage Studios</td></tr>
+<tr><td>Backend</td><td>[Modelname] Backend - Perlage Studios</td></tr>
+</tbody></table>
+<h3>1.2 Welcome & Introduction</h3>
+<p>Once groups are created, the team introduces themselves in this order:</p>
+<table><thead><tr><th>#</th><th>Role</th><th>Action</th></tr></thead><tbody>
+<tr><td>1</td><td>Owner (Manuel)</td><td>Welcomes first, sets the tone</td></tr>
+<tr><td>2</td><td>Marketing Manager</td><td>Introduces with role and responsibilities</td></tr>
+<tr><td>3</td><td>Assistant</td><td>Introduces with role and responsibilities</td></tr>
+</tbody></table>
+<h3>Welcome Message Templates</h3>
+<p><strong>Owner:</strong><br/>Hey [Modelname]! I am Manuel, founder of Perlage Studios. Welcome to the team! I am always in the background making sure everything runs smoothly. If you have any bigger questions or concerns, feel free to reach out to me anytime. We are excited to work with you!</p>
+<p><strong>Marketing Manager:</strong><br/>Hey [Modelname]! I am [Name], your Marketing Manager. I take care of your content strategy, your Instagram accounts, and make sure your content goes viral. For anything related to content, videos, and social media, I am your go-to person!</p>
+<p><strong>Assistant:</strong><br/>Hey [Modelname]! I am [Name], I support you with video shooting and editing. If you have any questions about filming or your videos, feel free to reach out to me!</p>
+<div class="warning">TIP: These templates serve as a guide - core info (name, role, responsibility) must always be included.</div>
+<h3>1.3 Questionnaire and Tasks (2-Step Process)</h3>
+<table><thead><tr><th>Step</th><th>What?</th><th>Who sends?</th></tr></thead><tbody>
+<tr><td>Step 1</td><td>Questionnaire on website (24 text questions)</td><td>MM or Assistant</td></tr>
+<tr><td>Step 2</td><td>Tasks via WhatsApp (6 assignments with photo/video)</td><td>Leon - AFTER questionnaire</td></tr>
+</tbody></table>
+<p><strong>The 6 tasks in Step 2:</strong></p>
+<ol><li>Equipment photos + price</li><li>Room tour (video/photos of shooting location)</li><li>3 favorite outfits - Photos</li><li>3-4 reel inspirations - Links / screenshots</li><li>AI photos (30+ photos, face + body)</li><li>Link landing page background image - 1-3 photos</li></ol>
+<h3>1.4 AI Photos - Requirements</h3>
+<table><thead><tr><th>Requirement</th><th>Details</th></tr></thead><tbody>
+<tr><td>Quantity</td><td>Minimum 30 photos (more is better)</td></tr>
+<tr><td>Mix</td><td>Face selfies, body selfies, full body, bikini, casual clothing</td></tr>
+<tr><td>Quality</td><td>Good lighting, no filters, not blurry</td></tr>
+<tr><td>Face</td><td>Always clearly visible - no caps, sunglasses, obstructions</td></tr>
+<tr><td>People</td><td>No other people in any photos</td></tr>
+<tr><td>Gallery</td><td>Existing photos from gallery are allowed</td></tr>
+</tbody></table>
+<div class="warning">More variation (outfits, locations, poses, lighting) = better AI character training.</div>
+<h2>Phase 2 - Accounts and Link Setup</h2>
+<h3>2.1 Purchase Instagram Accounts</h3>
+<table><thead><tr><th>Detail</th><th>Standard</th></tr></thead><tbody>
+<tr><td>Quantity</td><td>4 accounts per new model</td></tr>
+<tr><td>Account type</td><td>Aged accounts (1-2 years old)</td></tr>
+<tr><td>Responsible</td><td>Leon</td></tr>
+<tr><td>Suppliers</td><td>See SOP #2 (Vendors and Tools)</td></tr>
+</tbody></table>
+<p>If a model brings their own IG accounts (1-2), the model keeps and manages them.</p>
+<h3>2.2 Account Distribution</h3>
+<table><thead><tr><th>Role</th><th>Accounts</th><th>Description</th></tr></thead><tbody>
+<tr><td>Marketing Manager</td><td>1 account</td><td>Main account - content instructions to model</td></tr>
+<tr><td>Poster VA</td><td>3 accounts</td><td>Manages, posts and interacts</td></tr>
+</tbody></table>
+<h3>2.3 Link Landing Page Setup</h3>
+<div class="warning">EACH account gets its OWN link! Same link on multiple accounts = chain reaction on ban.</div>
+<table><thead><tr><th>Element</th><th>Details</th></tr></thead><tbody>
+<tr><td>Current provider</td><td>Bouncy.ai</td></tr>
+<tr><td>Link name</td><td>= IG username of the account</td></tr>
+<tr><td>Buttons</td><td>OnlyFans + Private IG + optionally Fansly</td></tr>
+<tr><td>Deep links</td><td>18+ verification - Safari/Chrome (not IG browser)</td></tr>
+</tbody></table>
+<h2>Phase 3 - Marketing Concept and Content Strategy</h2>
+<h3>3.1 Marketing Concept (5 Steps)</h3>
+<table><thead><tr><th>Step</th><th>Topic</th><th>What is done?</th></tr></thead><tbody>
+<tr><td>1</td><td>Creator Strengths</td><td>Analyze body, personality, setup, talents</td></tr>
+<tr><td>2</td><td>Target Creator List</td><td>Analyze 10 creators: What to adopt? What to do better?</td></tr>
+<tr><td>3</td><td>Define Target Group</td><td>Who do we want to target? Picture the average subscriber</td></tr>
+<tr><td>4</td><td>Define Content Style</td><td>What type of content, which niche, what branding?</td></tr>
+<tr><td>5</td><td>Write 5x 10/10 Reels</td><td>Checklist per reel: Why is it a 10/10 reel?</td></tr>
+</tbody></table>
+<h3>3.2 First Content List</h3>
+<table><thead><tr><th>Scenario</th><th>Approach</th></tr></thead><tbody>
+<tr><td>New / small model</td><td>4-5 viral videos from current research - model recreates 1:1</td></tr>
+<tr><td>Larger model</td><td>Individually tailored list based on what works</td></tr>
+<tr><td>AI content model</td><td>Same process, content created via AI</td></tr>
+</tbody></table>
+<div class="warning">No outdated lists! Content must always be current and trending.</div>
+<h2>Phase 4 - Team Assignment and Tools</h2>
+<table><thead><tr><th>Role</th><th>Task</th></tr></thead><tbody>
+<tr><td>Marketing Manager</td><td>Main contact. Content strategy, instructions, AI content creation</td></tr>
+<tr><td>Assistant</td><td>Support with video shooting, editing together with editor</td></tr>
+<tr><td>Poster VA</td><td>Manages 3 of 4 accounts, posts content, interacts</td></tr>
+</tbody></table>
+<h2>Phase 5 - Account Warming and Go-Live</h2>
+<h3>5.1 Go-Live Conditions</h3>
+<ul><li>All IG accounts assigned (MA + Poster VA)</li><li>Everyone logged into their accounts</li><li>Link landing pages created and configured</li><li>Account warming started</li><li>Content available and high quality</li><li>Funnel check completed (Leon)</li><li>Posting timezone: Morning US time (Pacific Time)</li></ul>
+<h3>5.2 Interaction Rules</h3>
+<div class="warning">Do NOT interact like a bot! IG detects robotic behavior.</div>
+<table><thead><tr><th>Wrong</th><th>Right</th></tr></thead><tbody>
+<tr><td>Watch reel 1 sec, instantly like</td><td>Actually watch reels, skip some</td></tr>
+<tr><td>Like every reel</td><td>Like some, skip some</td></tr>
+<tr><td>Always same actions</td><td>Mix: scroll, like, comment, stories</td></tr>
+<tr><td>Follow 50 accounts right away</td><td>Slowly scroll through feed</td></tr>
+</tbody></table>
+<h2>Timeline Overview</h2>
+<table><thead><tr><th>Timeframe</th><th>Phase</th><th>Key Actions</th></tr></thead><tbody>
+<tr><td>Day 1</td><td>Phase 1: Communication</td><td>Groups, welcome, questionnaire + tasks</td></tr>
+<tr><td>Day 1-2</td><td>Phase 2: Accounts and Links</td><td>Purchase, distribute, create landing pages</td></tr>
+<tr><td>Day 1-3</td><td>Phase 3: Concept and Content</td><td>Marketing concept, content list, material</td></tr>
+<tr><td>Day 1-2</td><td>Phase 4: Team and Tools</td><td>Assign, funnel check, Asana</td></tr>
+<tr><td>Day 1-7+</td><td>Phase 5: Warming and Go-Live</td><td>Warming, from day 7+ Facebook + bio link</td></tr>
+</tbody></table>
+<h2>WhatsApp Task Templates</h2>
+<h3>English - Tasks Message</h3>
+<p>Hey [Modelname]! Thanks for filling out the questionnaire. Now we still need a few things from you:<br/><br/>
+1. Equipment Photos - Please send a photo of each piece of equipment you have (ring light, tripod, camera, mic etc.) + include how much it cost<br/>
+2. Room Tour - Please send a short video or photos of where you would shoot content<br/>
+3. Outfit Photos - Send pictures in your 3 favorite outfits where you feel the hottest<br/>
+4. Reel Inspirations - Send 3-4 reels or creators whose content style you like<br/>
+5. Social Media Accounts - Please send the links to all relevant social media accounts (IG, TikTok, Twitter, Reddit, etc.)<br/>
+6. OnlyFans/Fansly Account - Do you already have an OnlyFans or Fansly account? If yes, link please!<br/><br/>
+Please send everything here in the chat!</p>
+<h3>Deutsch - Tasks-Nachricht</h3>
+<p>Hey [Modelname]! Danke fuers Ausfullen des Fragebogens. Jetzt brauchen wir noch ein paar Sachen von dir:<br/><br/>
+1. Equipment-Fotos - Bitte schick ein Foto von jedem Geraet das du hast + schreib dazu wie viel es gekostet hat<br/>
+2. Room Tour - Bitte schick ein kurzes Video oder Fotos von dort wo du Content drehen wuerdest<br/>
+3. Outfit-Fotos - Schick Bilder in deinen 3 Lieblingsoutfits in denen du dich am heissesten fuehlst<br/>
+4. Reel-Inspirationen - Schick 3-4 Reels oder Creator die dir vom Content her gefallen<br/>
+5. Social-Media-Accounts - Bitte sende die Links zu allen relevanten Social-Media-Accounts<br/>
+6. OnlyFans-/Fansly-Account - Hast du bereits einen OnlyFans- oder Fansly-Account? Wenn ja, bitte den Link senden!<br/><br/>
+Bitte schick alles hier in den Chat!</p>`
+    }
+,
+    {
+      id: 6,
+      title: "Onboarding Questions & Templates",
+      category: "Operations",
+      version: "1.0",
+      updated: "March 2026",
+      content: `<h2>Overview</h2>
+<p>This SOP contains the full questionnaire sent to new models via the website, plus the WhatsApp task message templates. The questionnaire is sent in Step 1, the tasks message in Step 2 (see SOP #5).</p>
+<p>Website link: <strong>https://leonmiguelgonzales-droid.github.io/Onboarding/</strong></p>
+
+<h2>Questionnaire — English</h2>
+<p>Send this to the model via the website link or copy directly into WhatsApp/Telegram.</p>
+<h3>1 - Personal Information</h3>
+<ol>
+<li>What is your name / stage name?</li>
+<li>How old are you?</li>
+<li>What is your height?</li>
+<li>What is your nationality?</li>
+<li>Where do you currently live? (Country / City)</li>
+<li>What is your current job / occupation?</li>
+</ol>
+<h3>2 - Goals and Availability</h3>
+<ol start="7">
+<li>What is your long-term goal for OnlyFans?</li>
+<li>What monthly income would you like to reach? (realistic and dream goal)</li>
+<li>How many hours per day can you dedicate to OF?</li>
+<li>What is your daily schedule like? When are you most available?</li>
+<li>What are your absolute No-Gos on OF and Social Media?</li>
+</ol>
+<h3>3 - What Makes You Unique?</h3>
+<p><em>Think about everything that is special about you — no matter how small it seems!</em></p>
+<ol start="12">
+<li>What are your hobbies, interests, or passions?</li>
+<li>Do you have any special talents or skills for content? (dancing, cooking, accent, humor...)</li>
+<li>Do you have any pets? If yes, which ones?</li>
+<li>Do you have access to special locations? (pool, beach, gym, nature spots...)</li>
+<li>Do you have any special items, gadgets or accessories that could stand out? (motorcycle, sports car, instrument...)</li>
+</ol>
+<h3>4 - Equipment and Content Style</h3>
+<ol start="17">
+<li>What phone do you currently use? (model and camera quality)</li>
+<li>Do you have any additional equipment? (ring light, tripod, camera, mic...)</li>
+</ol>
+<h3>5 - Social Media and Content</h3>
+<ol start="19">
+<li>Which platforms are you currently active on that we can use for OF? (IG, TikTok, Twitter, Reddit, etc.)</li>
+<li>Do you already have an OnlyFans account? If yes, link please!</li>
+<li>Do you have any existing social content we can use? (photos, videos, reels)</li>
+</ol>
+<h3>6 - Additional Info</h3>
+<ol start="22">
+<li>Have you worked with an agency before? If yes, what was your experience?</li>
+<li>Is there anything else important we should know about you?</li>
+</ol>
+
+<h2>WhatsApp Tasks Message — English</h2>
+<p>Leon sends this AFTER the questionnaire is returned:</p>
+<p>Hey [Modelname]! Thanks for filling out the questionnaire! Now we still need a few things from you:<br/><br/>
+<strong>1. Equipment Photos</strong><br/>Please send a photo of each piece of equipment you have (ring light, tripod, camera, mic etc.) + include how much it cost<br/><br/>
+<strong>2. Room Tour</strong><br/>Please send a short video or photos of where you would shoot content — so we can assess lighting and setup<br/><br/>
+<strong>3. Outfit Photos</strong><br/>Send pictures in your 3 favorite outfits where you feel the hottest<br/><br/>
+<strong>4. Reel Inspirations</strong><br/>Send 3-4 reels or creators whose content style you like — so we get a feel for what direction suits you<br/><br/>
+<strong>5. Social Media Accounts</strong><br/>Please send the links to all relevant social media accounts (IG, TikTok, Twitter, Reddit, etc.)<br/><br/>
+<strong>6. OnlyFans/Fansly Account</strong><br/>Do you already have an OnlyFans or Fansly account? If yes, link please!<br/><br/>
+Please send everything here in the chat!</p>`
     }
   ],
   de: [
     {
       id: 1,
       title: "SOP #1 — Kontoprobleme",
-      subtitle: "Bann · Shadowban · Video entfernt",
       category: "Betrieb",
       version: "3.0",
       updated: "März 2026",
       content: `<h2>1. Kontokategorisierung</h2>
 <p>Jedes Konto wird nach der Anzahl der täglich generierten Abonnenten kategorisiert.</p>
-<table><thead><tr><th>Kategorie</th><th>Subs/Tag</th><th>Wert/Tag</th><th>Reaktion</th></tr></thead>
-<tbody>
-<tr><td>🟢 Niedrige Priorität</td><td>0–4</td><td>$0–$120</td><td>Neues Konto</td></tr>
-<tr><td>🟡 Mittel wichtig</td><td>5–14</td><td>$125–$420</td><td>Kosten-Nutzen</td></tr>
-<tr><td>🔴 Sehr wichtig</td><td>15–100</td><td>$375–$3.000</td><td>Sofort Unban-Service</td></tr>
+<table><thead><tr><th>Kategorie</th><th>Subs/Tag</th><th>Wert/Tag</th><th>Reaktion auf Bann</th></tr></thead><tbody>
+<tr><td>🟢 Niedrige Priorität</td><td>0–4 Subs</td><td>$0–$120</td><td>Neues Konto erstellen</td></tr>
+<tr><td>🟡 Mittel wichtig</td><td>5–14 Subs</td><td>$125–$420</td><td>Kosten-Nutzen-Analyse</td></tr>
+<tr><td>🔴 Sehr wichtig</td><td>15–100 Subs</td><td>$375–$3.000</td><td>Sofort Unban-Service</td></tr>
 </tbody></table>
-<div class="warning">⚠ NIEMALS appealen ohne Manager! Ein Appeal macht den Unban deutlich teurer.</div>
+<div class="warning">⚠ NIEMALS einen Appeal einlegen, bevor du mit dem Manager gesprochen hast! Ein Appeal macht den Unban deutlich teurer ($300 → $1.500+).</div>
 <h2>2. Konto gebannt</h2>
-<div class="warning">⚠ GOLDENE REGEL: KEINEN Appeal! Erst Manager sprechen.</div>
+<div class="warning">⚠ GOLDENE REGEL: KEINEN Appeal einlegen! Zuerst mit dem Manager sprechen.</div>
 <h3>2.1 🟢 Niedrige Priorität (0–4 Subs/Tag)</h3>
-<ol><li>Screenshot Bann-Bildschirm</li><li>Appeal einreichen und warten</li><li>Vollständig gebannt → Neues Konto</li><li>Als "gebannt" markieren</li></ol>
+<ol><li>Screenshot des Bann-Bildschirms + "Mehr über die Regeln" machen</li><li>Appeal einlegen und warten</li><li>Vollständig gebannt → Neues Konto erstellen oder kaufen</li><li>Konto als "gebannt" im Kontoüberblick markieren</li></ol>
 <h3>2.2 🟡 Mittel wichtig (5–14 Subs/Tag)</h3>
-<ol><li>Screenshot Bann-Bildschirm</li><li>KEIN Appeal</li><li>Kosten-Nutzen-Rechnung</li><li>Wenn lohnenswert: Unban-Service kontaktieren</li><li>Manager informieren</li></ol>
+<ol><li>Screenshot des Bann-Bildschirms machen</li><li>KEINEN Appeal einlegen</li><li>Kosten-Nutzen-Rechnung durchführen</li><li>Wenn lohnenswert: Unban-Service kontaktieren + Angebote einholen</li><li>Manager kurz via WhatsApp informieren</li><li>Kontoüberblick aktualisieren</li></ol>
 <h3>2.3 🔴 Sehr wichtig (15–100 Subs/Tag)</h3>
-<ol><li>Screenshot Bann-Bildschirm</li><li>KEIN APPEAL!</li><li>Versicherung? JA: Liquide. NEIN: Joker zuerst</li><li>Manager SOFORT benachrichtigen</li></ol>
-<h2>3. Shadowban</h2>
-<p><strong>Wo prüfen:</strong> Instagram → Einstellungen → Kontostatus → "Eingeschränkte Reichweite"</p>
-<ol><li>Betroffene Inhalte prüfen</li><li>Appeal einlegen</li><li>2 Stunden warten</li><li>Keine Entscheidung → Inhalte löschen</li></ol>
+<ol><li>Screenshot des Bann-Bildschirms machen</li><li>KEINEN APPEAL!</li><li>Versicherung prüfen: JA → Liquide kontaktieren. NEIN → Joker zuerst kontaktieren.</li><li>Manager SOFORT benachrichtigen</li><li>Konto als "gebannt" markieren + Datum</li><li>Unban-Service täglich nachfassen</li></ol>
+<h2>3. Shadowban (Eingeschränkte Reichweite)</h2>
+<p>Ein Shadowban bedeutet, dass Inhalte nicht mehr neuen Leuten gezeigt werden. Wo prüfen: <strong>Instagram → Einstellungen → Kontostatus → "Eingeschränkte Reichweite"</strong></p>
+<table><thead><tr><th>Option</th><th>Status</th><th>Aktion</th></tr></thead><tbody>
+<tr><td>"Personen, denen du nicht folgst"</td><td>🟠 Orange</td><td>SOFORT handeln! Prozess unten.</td></tr>
+<tr><td>"Personen unter 18"</td><td>🟠 Orange</td><td>IGNORIEREN — wir wollen sowieso nur 18+ erreichen.</td></tr>
+<tr><td>Beide Optionen</td><td>🟢 Grün</td><td>Alles gut. Normal weiterarbeiten.</td></tr>
+</tbody></table>
+<h3>Shadowban beheben</h3>
+<ol><li>Auf "Eingeschränkte Reichweite" klicken und betroffene Inhalte prüfen</li><li>"Appeal einlegen" auf den betroffenen Inhalten klicken</li><li>2 Stunden auf Entscheidung warten</li><li>Appeal erfolgreich? → Erledigt. Keine Entscheidung nach 2h? → Betroffenen Content löschen. Appeal abgelehnt? → Content löschen.</li></ol>
 <h2>4. Video entfernt</h2>
-<ol><li>Screenshot der Entfernungsmeldung</li><li>Screenshot + Video an Teamgruppe</li><li>Versicherung? JA: Service, kein Appeal. NEIN: Appeal</li></ol>`
+<ol><li>Screenshot der Entfernungsmeldung machen</li><li>Screenshot + vollständiges Video an Teamgruppe senden</li><li>Versicherung? JA: Unban-Service benachrichtigen — er behebt es. KEINEN Appeal! NEIN: Appeal einlegen.</li></ol>
+<h2>5. Schnellreferenz</h2>
+<table><thead><tr><th>Situation</th><th>Sofortmaßnahme</th></tr></thead><tbody>
+<tr><td>🟢 Niedrige Priorität gebannt</td><td>Screenshot → Appeal → Bei Ablehnung: Neues Konto</td></tr>
+<tr><td>🟡 Mittel gebannt</td><td>Screenshot → KEIN Appeal → Kosten-Nutzen → Manager informieren</td></tr>
+<tr><td>🔴 Sehr wichtig gebannt</td><td>Screenshot → KEIN APPEAL → Versicherung? Ja: Liquide. Nein: Joker → Manager SOFORT</td></tr>
+<tr><td>Shadowban</td><td>Versicherung? Ja: Liquide. Nein: Appeal → 2h warten → Kein Erfolg: Content löschen</td></tr>
+<tr><td>Video entfernt</td><td>Screenshot + Video an Gruppe → Versicherung? Ja: Service, kein Appeal. Nein: Appeal</td></tr>
+</tbody></table>`
+    },
+    {
+      id: 2,
+      title: "SOP #2 — Vendors & Tools",
+      category: "Betrieb",
+      version: "1.0",
+      updated: "März 2026",
+      content: `<h2>1. Follower kaufen</h2>
+<p>Wir kaufen gefälschte Follower ausschließlich für Instagram. Zweck: Vertrauensaufbau — Konten mit 0 Followern wirken unseriös.</p>
+<table><thead><tr><th>Anbieter</th><th>Website</th><th>Preis/1K</th><th>Priorität</th></tr></thead><tbody>
+<tr><td>MoreThanPanel</td><td>morethanpanel.com</td><td>ab $0,31</td><td>⭐ Bevorzugt</td></tr>
+<tr><td>SMMFollows</td><td>smmfollows.com</td><td>Ähnlich</td><td>Alternative</td></tr>
+</tbody></table>
+<div class="warning">⚠ Beim Follower-Kauf muss das Konto auf PUBLIC gestellt sein, bis alle Follower angekommen sind! Danach wieder auf privat stellen.</div>
+<h2>2. Instagram-Konten kaufen</h2>
+<p>Wir kaufen immer gealterter IG-Konten statt sie manuell zu erstellen. Das Land/IP des Kontos muss zur Zielgruppe des Creators passen.</p>
+<table><thead><tr><th>Anbieter</th><th>Kontakt</th><th>Preis/Konto</th><th>Hinweise</th></tr></thead><tbody>
+<tr><td>AccsMarket</td><td>accsmarket.com</td><td>$3–7</td><td>⭐ Bevorzugt</td></tr>
+<tr><td>WhatsApp Kontakt</td><td>+44 7926 386960</td><td>~$2</td><td>Genau kommunizieren was benötigt wird</td></tr>
+</tbody></table>
+<h2>3. Unban Services</h2>
+<table><thead><tr><th>Anbieter</th><th>Kontakt</th><th>Preis (ohne Appeal)</th><th>Preis (REP/MA)</th><th>Geschwindigkeit</th></tr></thead><tbody>
+<tr><td>Joker</td><td>Telegram: @jokerisafk</td><td>$300–400</td><td>$2.000+</td><td>2–3h, max 24h</td></tr>
+<tr><td>Berdan</td><td>Telegram: @qberdan</td><td>€500</td><td>~€1.700</td><td>5–7 Tage</td></tr>
+<tr><td>Liquide</td><td>Telegram: @liquidback</td><td>Variiert</td><td>Variiert</td><td>Langsam</td></tr>
+</tbody></table>
+<h2>4. Link Services & Funnel Tools</h2>
+<table><thead><tr><th>Tool</th><th>Verwendung</th><th>Zugang</th></tr></thead><tbody>
+<tr><td>Bouncy.ai</td><td>Funnel-Links für OnlyFans</td><td>Zugang über Leon</td></tr>
+<tr><td>Link.me</td><td>Funnel-Links für OnlyFans</td><td>Zugang über Leon</td></tr>
+<tr><td>GoDaddy</td><td>Domains für neue Models kaufen</td><td>Siehe Onboarding SOP</td></tr>
+</tbody></table>
+<h2>5. Schnellreferenz</h2>
+<table><thead><tr><th>Was brauche ich?</th><th>Wo?</th><th>Preis</th></tr></thead><tbody>
+<tr><td>Fake Follower (IG)</td><td>morethanpanel.com</td><td>ab $0,31 / 1K</td></tr>
+<tr><td>IG-Konto (bevorzugt)</td><td>accsmarket.com</td><td>$3–7 / Konto</td></tr>
+<tr><td>Unban (ohne Appeal)</td><td>Joker: @jokerisafk</td><td>$300–400</td></tr>
+<tr><td>Funnel-Links</td><td>Bouncy.ai / Link.me (über Leon)</td><td>—</td></tr>
+<tr><td>SMS-Verifizierung</td><td>smspool.net</td><td>Variiert</td></tr>
+</tbody></table>`
+    },
+    {
+      id: 3,
+      title: "SOP #3 — Aufgabenverwaltung",
+      category: "Betrieb",
+      version: "1.0",
+      updated: "März 2026",
+      content: `<h2>1. Warum Asana?</h2>
+<p>Unser Problem: Aufgaben werden in WhatsApp besprochen, aber nicht verfolgt. Besonders Wachstumsaufgaben gehen verloren.</p>
+<div class="warning">⚠ WhatsApp ist NUR für schnelle Kommunikation und dringende Nachrichten. Aufgaben werden NICHT MEHR über WhatsApp vergeben oder verfolgt.</div>
+<h2>2. Asana-Struktur</h2>
+<table><thead><tr><th>Spalte</th><th>Bedeutung</th></tr></thead><tbody>
+<tr><td>📋 To Do</td><td>Neue Aufgaben, die noch nicht begonnen wurden</td></tr>
+<tr><td>🔧 In Bearbeitung</td><td>Aufgaben, an denen gerade gearbeitet wird</td></tr>
+<tr><td>❓ Entscheidung nötig</td><td>Aufgabe ist unklar. Täglich überprüft.</td></tr>
+<tr><td>⏳ Warte auf…</td><td>Warte auf jemand anderen</td></tr>
+<tr><td>✅ Erledigt</td><td>Abgeschlossen. Ende der Woche aufgeräumt.</td></tr>
+</tbody></table>
+<h2>3. Die WhatsApp → Asana Regel</h2>
+<div class="warning">⚠ Wenn eine Aufgabe in WhatsApp besprochen wird, muss sie SOFORT in Asana eingetragen werden. Kein Asana-Eintrag = Keine Aufgabe.</div>
+<h2>4. Goldene Regeln</h2>
+<table><thead><tr><th>#</th><th>Regel</th></tr></thead><tbody>
+<tr><td>1</td><td>Kein Asana-Eintrag = Keine Aufgabe.</td></tr>
+<tr><td>2</td><td>Jede Aufgabe hat einen Verantwortlichen.</td></tr>
+<tr><td>3</td><td>Unsicher? → "Entscheidung nötig". Nie liegen lassen.</td></tr>
+<tr><td>4</td><td>WhatsApp-Aufgabe? → Sofort in Asana + "Ist in Asana" bestätigen.</td></tr>
+<tr><td>5</td><td>Asana morgens öffnen, abends Status aktualisieren. Täglich. 5 Minuten.</td></tr>
+</tbody></table>`
+    },
+    {
+      id: 4,
+      title: "SOP #4 — Marketing MA",
+      category: "Betrieb",
+      version: "1.0",
+      updated: "März 2026",
+      content: `<h2>1. Rollenübersicht</h2>
+<p>Der Marketing MA ist für den gesamten Content-Prozess von der Ideenfindung bis zum fertigen Video verantwortlich. Nach vollständigem Onboarding betreut er 2 Creator gleichzeitig.</p>
+<h2>2. Tagesablauf</h2>
+<h3>Phase 1: Morgens</h3>
+<ol><li>Asana öffnen: Was steht heute an? (2–3 Min)</li><li>WhatsApp prüfen: Neue Nachrichten von Models oder Team?</li><li>CreatorHero öffnen: Subs und Link-Klicks von gestern prüfen</li><li>Video-Performance prüfen</li><li>Kontostatus: Beide IG-Konten auf Bans/Shadowbans prüfen</li></ol>
+<h3>Phase 2: Vormittags — Content-Listen erstellen</h3>
+<p>Das ist die wichtigste und kreativste Aufgabe des Tages. Morgens erledigen, wenn die Konzentration am höchsten ist.</p>
+<ol><li>Recherche vom Vorabend öffnen</li><li>Videos auswählen, die zum Model passen</li><li>Content-Liste schreiben (siehe Template in Abschnitt 3)</li><li>Pro Model: Mindestens 4–5 Videos pro Liste</li><li>Fertige Liste an die Listen-Gruppe auf Telegram/WhatsApp senden</li></ol>
+<h3>Phase 3: Live-Feedback (wenn Model filmt)</h3>
+<div class="warning">⚠ Live-Feedback ist entscheidend für die Videoqualität. Ohne Feedback filmen Models oft Videos, die nicht verwendbar sind.</div>
+<h3>Phase 4: Nachmittags</h3>
+<ol><li>Bearbeitete Videos reviewen und Feedback geben</li><li>IG-Konten verwalten (posten, Kommentare, Stories)</li></ol>
+<h3>Phase 5: Abends — Recherche</h3>
+<ol><li>Gezielt auf Instagram recherchieren (FYP muss richtig konfiguriert sein!)</li><li>Gute Videos in die entsprechende Telegram-Recherche-Gruppe senden</li><li>Ca. 30–60 Minuten pro Session, max. 90 Minuten</li></ol>
+<h2>3. Content-Listen Template</h2>
+<table><thead><tr><th>Feld</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td>Text</td><td>Der gesprochene Text oder Text im Video</td></tr>
+<tr><td>Acting</td><td>Was soll das Model tun? (Mimik, Gestik, Bewegung)</td></tr>
+<tr><td>Location</td><td>Wo filmen? (Schlafzimmer, Küche, Gym, draußen etc.)</td></tr>
+<tr><td>Outfit</td><td>Was soll das Model tragen?</td></tr>
+<tr><td>Description/Caption</td><td>Die Caption unter dem Video</td></tr>
+</tbody></table>
+<h2>4. Häufige Fehler</h2>
+<h3>FYP nicht richtig aufgebaut</h3>
+<p>Neue MAs verbringen 3–4 Stunden mit Recherche und finden kaum gute Videos. Lösung: Recherche-Account NUR für Recherche nutzen — niemals für persönlichen Gebrauch.</p>
+<h3>Content-Listen zu unspezifisch</h3>
+<p>Listen sind zu vage, das Model weiß nicht genau was zu tun ist. Lösung: Jedes Feld muss spezifisch und eindeutig sein. Nicht "sei sexy" sondern "lehn dich lässig gegen die Wand, schau in die Kamera, lächle kurz."</p>`
+    },
+    {
+      id: 5,
+      title: "SOP #5 - Neues Model Onboarding",
+      category: "Betrieb",
+      version: "1.0",
+      updated: "Maerz 2026",
+      content: `<h2>Vollstaendige Onboarding-Checkliste</h2>
+<table><thead><tr><th>Aufgabe</th><th>Verantwortlich</th><th>Deadline</th></tr></thead><tbody>
+<tr><td>WhatsApp-Gruppen erstellt (Traffic + Backend)</td><td>Backend</td><td>Tag 1</td></tr>
+<tr><td>Willkommensnachrichten gesendet (Owner, MM, Assistent)</td><td>Alle</td><td>Tag 1</td></tr>
+<tr><td>Onboarding-Fragebogen gesendet (Website)</td><td>MM / Assistent</td><td>Tag 1</td></tr>
+<tr><td>Fragebogen vollstaendig zurueckgesendet</td><td>Model</td><td>Tag 1-2</td></tr>
+<tr><td>Tasks gesendet (Equipment, Room Tour, Outfits, Reels, AI-Fotos, Link-Bild)</td><td>Leon</td><td>Nach Fragebogen</td></tr>
+<tr><td>Alle Tasks vom Model erhalten</td><td>Model</td><td>Tag 1-2</td></tr>
+<tr><td>4 IG-Konten gekauft</td><td>Leon</td><td>Tag 1-2</td></tr>
+<tr><td>Konten ans Team verteilt (1x MM, 3x VA)</td><td>Manuel / MM</td><td>Tag 1-2</td></tr>
+<tr><td>Link-Landingpage pro Konto erstellt</td><td>MM / VA</td><td>Bis Tag 5</td></tr>
+<tr><td>Deep Links + 18+ Verifizierung konfiguriert</td><td>MM / VA</td><td>Bis Tag 5</td></tr>
+<tr><td>Hintergrundbild fuer Links organisiert</td><td>MM</td><td>Bis Tag 5</td></tr>
+<tr><td>Marketingkonzept fertiggestellt (5 Schritte)</td><td>MM + Team</td><td>Tag 1-3</td></tr>
+<tr><td>Erste Content-Liste ans Model gesendet</td><td>MM</td><td>Tag 2-5</td></tr>
+<tr><td>Warming-Prozess gestartet</td><td>MM / VA</td><td>Tag 1-2</td></tr>
+<tr><td>Funnel-Check abgeschlossen</td><td>Leon</td><td>Tag 2-3</td></tr>
+<tr><td>Asana-Projekt erstellt</td><td>MM</td><td>Tag 1-2</td></tr>
+<tr><td>Alle in Konten eingeloggt</td><td>MM / VA</td><td>Tag 1-2</td></tr>
+<tr><td>Go-live bestaetigt</td><td>Manuel / MM</td><td>Ab Tag 7+</td></tr>
+</tbody></table>
+<h2>Phase 1 - Kommunikation und Ersteinrichtung</h2>
+<h3>1.1 WhatsApp-Gruppen erstellen</h3>
+<table><thead><tr><th>Gruppe</th><th>Namensformat</th></tr></thead><tbody>
+<tr><td>Traffic / Marketing</td><td>[Modelname] Traffic - Perlage Studios</td></tr>
+<tr><td>Backend</td><td>[Modelname] Backend - Perlage Studios</td></tr>
+</tbody></table>
+<h3>1.2 Willkommen und Vorstellung</h3>
+<table><thead><tr><th>#</th><th>Rolle</th><th>Aktion</th></tr></thead><tbody>
+<tr><td>1</td><td>Owner (Manuel)</td><td>Begruesst zuerst, setzt den Ton</td></tr>
+<tr><td>2</td><td>Marketing Manager</td><td>Stellt sich mit Rolle und Verantwortlichkeiten vor</td></tr>
+<tr><td>3</td><td>Assistent</td><td>Stellt sich mit Rolle und Verantwortlichkeiten vor</td></tr>
+</tbody></table>
+<h3>Willkommensnachrichten-Vorlagen</h3>
+<p><strong>Owner:</strong><br/>Hey [Modelname]! Ich bin Manuel, Gruender von Perlage Studios. Willkommen im Team! Ich bin immer im Hintergrund und stelle sicher, dass alles reibungslos laeuft. Wir freuen uns auf die Zusammenarbeit!</p>
+<p><strong>Marketing Manager:</strong><br/>Hey [Modelname]! Ich bin [Name], dein Marketing Manager. Ich kuemmere mich um deine Content-Strategie, deine Instagram-Konten und stelle sicher, dass dein Content viral geht. Bei allem was Content, Videos und Social Media betrifft, bin ich deine Ansprechperson!</p>
+<p><strong>Assistent:</strong><br/>Hey [Modelname]! Ich bin [Name], ich unterstuetze dich beim Video-Drehen und Schneiden. Bei Fragen zum Filmen oder zu deinen Videos kannst du dich gerne bei mir melden!</p>
+<h3>1.3 Fragebogen und Tasks (2-Schritt-Prozess)</h3>
+<table><thead><tr><th>Schritt</th><th>Was?</th><th>Wer sendet?</th></tr></thead><tbody>
+<tr><td>Schritt 1</td><td>Fragebogen auf Website (24 Textfragen)</td><td>MM oder Assistent</td></tr>
+<tr><td>Schritt 2</td><td>Tasks per WhatsApp (6 Aufgaben mit Foto/Video)</td><td>Leon - NACH Fragebogen</td></tr>
+</tbody></table>
+<p><strong>Die 6 Tasks:</strong></p>
+<ol><li>Equipment-Fotos + Preis</li><li>Room Tour (Video/Fotos des Drehortes)</li><li>3 Lieblingsoutfits - Fotos</li><li>3-4 Reel-Inspirationen - Links / Screenshots</li><li>AI-Fotos (30+ Fotos, Gesicht + Koerper)</li><li>Hintergrundbild fuer Link-Landingpage - 1-3 Fotos</li></ol>
+<h2>Phase 2 - Konten und Link-Einrichtung</h2>
+<table><thead><tr><th>Detail</th><th>Standard</th></tr></thead><tbody>
+<tr><td>Anzahl</td><td>4 Konten pro neuem Model</td></tr>
+<tr><td>Kontotyp</td><td>Gealterter Konten (1-2 Jahre alt)</td></tr>
+<tr><td>Verantwortlich</td><td>Leon</td></tr>
+</tbody></table>
+<div class="warning">JEDES Konto bekommt seinen EIGENEN Link! Gleicher Link auf mehreren Konten = Kettenreaktion beim Bann.</div>
+<h2>Phase 3 - Marketingkonzept und Content-Strategie</h2>
+<table><thead><tr><th>Schritt</th><th>Thema</th><th>Was wird gemacht?</th></tr></thead><tbody>
+<tr><td>1</td><td>Creator-Staerken</td><td>Koerper, Persoenlichkeit, Setup, Talente analysieren</td></tr>
+<tr><td>2</td><td>Ziel-Creator-Liste</td><td>10 Creator analysieren: Was uebernehmen? Was besser machen?</td></tr>
+<tr><td>3</td><td>Zielgruppe definieren</td><td>Wen wollen wir ansprechen?</td></tr>
+<tr><td>4</td><td>Content-Stil definieren</td><td>Welche Art Content, welche Nische, welches Branding?</td></tr>
+<tr><td>5</td><td>5x 10/10 Reels schreiben</td><td>Checkliste pro Reel: Warum ist es ein 10/10 Reel?</td></tr>
+</tbody></table>
+<h2>Phase 5 - Account Warming und Go-Live</h2>
+<ul><li>Alle IG-Konten zugewiesen (MA + Poster VA)</li><li>Alle in ihre Konten eingeloggt</li><li>Link-Landingpages erstellt und konfiguriert</li><li>Account-Warming gestartet</li><li>Content verfuegbar und von hoher Qualitaet</li><li>Funnel-Check abgeschlossen (Leon)</li><li>Posting-Zeitzone: Morgens US-Zeit (Pacific Time)</li></ul>
+<div class="warning">NICHT wie ein Bot interagieren! IG erkennt roboterhaftes Verhalten.</div>
+<table><thead><tr><th>Falsch</th><th>Richtig</th></tr></thead><tbody>
+<tr><td>Reel 1 Sek. ansehen, sofort liken</td><td>Reels wirklich ansehen, manche ueberspringen</td></tr>
+<tr><td>Jeden Reel liken</td><td>Manche liken, manche ueberspringen</td></tr>
+<tr><td>Immer gleiche Aktionen</td><td>Mix: scrollen, liken, kommentieren, Stories</td></tr>
+<tr><td>Sofort 50 Konten folgen</td><td>Langsam durch Feed scrollen</td></tr>
+</tbody></table>`
     }
+,
+    {
+      id: 6,
+      title: "SOP #6 - Onboarding Fragen und Vorlagen",
+      category: "Betrieb",
+      version: "1.0",
+      updated: "Maerz 2026",
+      content: `<h2>Uebersicht</h2>
+<p>Dieses SOP enthaelt den vollstaendigen Fragebogen fuer neue Models (Website) sowie die WhatsApp-Task-Nachrichtenvorlagen. Der Fragebogen wird in Schritt 1 gesendet, die Tasks-Nachricht in Schritt 2 (siehe SOP #5).</p>
+<p>Website-Link: <strong>https://leonmiguelgonzales-droid.github.io/Onboarding/</strong></p>
+
+<h2>Fragebogen - Deutsch</h2>
+<h3>1 - Persoenliche Informationen</h3>
+<ol>
+<li>Wie ist dein Name / Kuenstlername?</li>
+<li>Wie alt bist du?</li>
+<li>Wie gross bist du?</li>
+<li>Was ist deine Nationalitaet?</li>
+<li>Wo wohnst du aktuell? (Land / Stadt)</li>
+<li>Was ist dein aktueller Job / Beschaeftigung?</li>
+</ol>
+<h3>2 - Ziele und Verfuegbarkeit</h3>
+<ol start="7">
+<li>Was ist dein langfristiges Ziel mit OnlyFans?</li>
+<li>Welches monatliche Einkommen moechtest du erreichen? (realistisch und Traumziel)</li>
+<li>Wie viele Stunden pro Tag kannst du fuer OF aufwenden?</li>
+<li>Wie sieht dein Tagesablauf aus? Wann bist du am besten verfuegbar?</li>
+<li>Was sind deine absoluten No-Gos auf OF und Social Media?</li>
+</ol>
+<h3>3 - Was macht dich einzigartig?</h3>
+<p><em>Denk an alles was besonders an dir ist - egal wie klein es scheint!</em></p>
+<ol start="12">
+<li>Was sind deine Hobbys, Interessen oder Leidenschaften?</li>
+<li>Hast du besondere Talente oder Faehigkeiten fuer Content? (Tanzen, Kochen, Akzent, Humor...)</li>
+<li>Hast du Haustiere? Wenn ja, welche?</li>
+<li>Hast du Zugang zu besonderen Locations? (Pool, Strand, Gym, Natur-Spots...)</li>
+<li>Hast du besondere Gegenstaende, Gadgets oder Accessoires die auffallen koennten? (Motorrad, Sportwagen, Instrument...)</li>
+</ol>
+<h3>4 - Equipment und Content-Stil</h3>
+<ol start="17">
+<li>Welches Handy nutzt du? (Modell und Kameraqualitaet)</li>
+<li>Hast du weiteres Equipment? (Ringlicht, Stativ, Kamera, Mikro...)</li>
+</ol>
+<h3>5 - Social Media und Content</h3>
+<ol start="19">
+<li>Auf welchen Social Media Plattformen bist du aktiv die wir fuer OF nutzen koennen? (IG, TikTok, Twitter, Reddit, etc.)</li>
+<li>Hast du bereits einen OnlyFans-Account? Wenn ja, Link bitte!</li>
+<li>Hast du bestehenden Content den wir nutzen koennen? (Fotos, Videos, Reels)</li>
+</ol>
+<h3>6 - Weitere Infos</h3>
+<ol start="22">
+<li>Hast du schon mit einer Agentur zusammengearbeitet? Wenn ja, wie war die Erfahrung?</li>
+<li>Gibt es sonst noch etwas Wichtiges das wir ueber dich wissen sollten?</li>
+</ol>
+
+<h2>WhatsApp Tasks-Nachricht - Deutsch</h2>
+<p>Leon sendet diese Nachricht NACHDEM der Fragebogen zurueck ist:</p>
+<p>Hey [Modelname]! Danke fuers Ausfullen des Fragebogens! Jetzt brauchen wir noch ein paar Sachen von dir:<br/><br/>
+<strong>1. Equipment-Fotos</strong><br/>Bitte schick ein Foto von jedem Geraet das du hast (Ringlicht, Stativ, Kamera, Mikro etc.) + schreib dazu wie viel es gekostet hat<br/><br/>
+<strong>2. Room Tour</strong><br/>Bitte schick ein kurzes Video oder Fotos von dort wo du Content drehen wuerdest - so koennen wir Beleuchtung und Setup einschaetzen<br/><br/>
+<strong>3. Outfit-Fotos</strong><br/>Schick Bilder in deinen 3 Lieblingsoutfits in denen du dich am heissesten fuehlst<br/><br/>
+<strong>4. Reel-Inspirationen</strong><br/>Schick 3-4 Reels oder Creator die dir vom Content her gefallen - damit wir ein Gefuehl bekommen welche Richtung dir liegt<br/><br/>
+<strong>5. Social-Media-Accounts</strong><br/>Bitte sende die Links zu allen relevanten Social-Media-Accounts (Instagram, TikTok, Twitter, Reddit etc.)<br/><br/>
+<strong>6. OnlyFans-/Fansly-Account</strong><br/>Hast du bereits einen OnlyFans- oder Fansly-Account? Wenn ja, bitte den Link senden!<br/><br/>
+Bitte schick alles hier in den Chat!</p>`
+    }
+
   ]
 };
 
@@ -167,7 +934,7 @@ function RichToolbar({ onCommand }) {
 // ─── SOP Modal ────────────────────────────────────────────────────────────────
 function SOPModal({ sop, onSave, onClose }) {
   const editorRef = useRef(null);
-  const [meta, setMeta] = useState({ title: sop.title||"", subtitle: sop.subtitle||"", category: sop.category||"", version: sop.version||"1.0" });
+  const [meta, setMeta] = useState({ title: sop.title||"", category: sop.category||"", version: sop.version||"1.0" });
   useEffect(() => { if (editorRef.current) editorRef.current.innerHTML = sop.content || ""; }, []);
   const handleCommand = (cmd) => {
     if (cmd.startsWith("formatBlock_")) document.execCommand("formatBlock", false, cmd.split("_")[1]);
@@ -769,7 +1536,6 @@ export default function App() {
             : activeTab === "faqs"       ? <FAQsPage isAdmin={isAdmin} />
             : activeTab === "accounts"   ? <AccountsPage isAdmin={isAdmin} />
             : activeTab === "vendors"    ? <VendorsPage />
-            : activeTab === "creatorform" ? <CreatorFormPage />
             : null
           }
         </main>
@@ -814,410 +1580,3 @@ const cancelBtn = { background: "rgba(0,0,0,0.04)", border: "1px solid rgba(0,0,
 const saveBtn = { background: "linear-gradient(135deg, #667eea, #764ba2)", border: "none", borderRadius: 8, padding: "9px 20px", color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 6 };
 const pageTitle = { margin: "0 0 4px", color: "#2d3748", fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700 };
 const pageSubtitle = { margin: 0, color: "#9b8fc4", fontSize: 14 };
-
-// ─── PAGE: CREATOR FORM ───────────────────────────────────────────────────────
-// ─── PAGE: CREATOR FORM ───────────────────────────────────────────────────────
-const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbwbqaIcu-l06cpd5D3yJlsvD-TsFA5XqlMiib2PKk-qvsHYWIhCwSrDKxeExmNNU0Zenw/exec";
-
-const SECTIONS = {
-  en: [
-    {
-      id: "personal",
-      title: "👤 Personal Information",
-      fields: [
-        { id: "name",        label: "Name / Stage name",           type: "text",   required: true,  placeholder: "E.g. Sofia Rose" },
-        { id: "age",         label: "Age",                         type: "number", required: true,  min: 18, max: 99 },
-        { id: "height",      label: "Height",                      type: "text",   required: true,  placeholder: "E.g. 165 cm" },
-        { id: "nationality", label: "Nationality",                  type: "text",   required: true,  placeholder: "E.g. German" },
-        { id: "location",    label: "Country / City",               type: "text",   required: true,  placeholder: "E.g. Germany, Berlin" },
-        { id: "job",         label: "Current job / occupation",     type: "text",   required: false, placeholder: "E.g. Student, Waitress" },
-      ]
-    },
-    {
-      id: "goals",
-      title: "🎯 Goals & Availability",
-      fields: [
-        { id: "longterm_goal", label: "What is your long-term goal for OnlyFans?",                              type: "textarea", required: true,  placeholder: "E.g. financial freedom, quit my job, full-time creator..." },
-        { id: "income_goal",   label: "What monthly income would you like to reach? (realistic & dream goal)", type: "text",     required: true,  placeholder: "E.g. $2,000 realistic / $10,000 dream" },
-        { id: "hours_per_day", label: "How many hours per day can you dedicate to OnlyFans?",                  type: "select",   required: true,  options: ["1–2 hours", "3–4 hours", "5–6 hours", "7–8 hours", "8+ hours"] },
-        { id: "availability",  label: "What is your daily schedule like? When are you most available?",        type: "select",   required: true,  options: ["Morning (6–12)", "Afternoon (12–18)", "Evening (18–24)", "Night (0–6)", "Flexible"] },
-        { id: "no_gos",        label: "What are your absolute No-Gos on OnlyFans and Social Media?",           type: "textarea", required: true,  placeholder: "E.g. no face shown, no specific acts, no certain outfits..." },
-      ]
-    },
-    {
-      id: "usp",
-      title: "✨ USP: What Makes You Unique?",
-      note: "We want to find out what sets you apart from others. Think about everything that's special about you — no matter how small it seems!",
-      fields: [
-        { id: "hobbies",   label: "What are your hobbies, interests or passions?",                                                                                      type: "textarea", required: false, placeholder: "E.g. sports, cooking, gaming, art, travel...", hint: "E.g. sports, cooking, gaming, art, travel..." },
-        { id: "talents",   label: "Do you have special talents or skills that could be used in content? (can really be anything)",                                       type: "textarea", required: false, placeholder: "E.g. dancing, cooking, accent, humor, languages...", hint: "E.g. dancing, cooking, a unique accent, humor, instruments..." },
-        { id: "pets",      label: "Do you have pets? If yes, which ones?",                                                                                              type: "text",     required: false, placeholder: "E.g. dog, cat, rabbit...", hint: "Pets work great in Reels!" },
-        { id: "locations", label: "Do you have access to special locations outside your home?",                                                                          type: "textarea", required: false, placeholder: "E.g. horse stable, pool, boat, gym, restaurant, beach...", hint: "E.g. horse stable, pool, boat, gym, restaurant, nature spots, beach..." },
-        { id: "gadgets",   label: "Do you have special items, gadgets or accessories that could stand out?",                                                             type: "textarea", required: false, placeholder: "E.g. motorbike, sports car, musical instrument, collections...", hint: "E.g. motorbike, sports car, musical instrument, collections..." },
-      ]
-    },
-    {
-      id: "equipment",
-      title: "📱 Equipment, Setup & Content Style",
-      fields: [
-        { id: "phone_model",      label: "What phone do you currently use?",                                                           type: "text",       required: true,  placeholder: "E.g. iPhone 14 Pro", hint: "Model & camera quality, e.g. iPhone 14 Pro, Samsung S23" },
-        { id: "equipment_list",   label: "Do you have any additional equipment?",                                                      type: "multicheck", required: false, options: ["Ring light", "Tripod", "Camera", "Microphone", "Softbox", "None"], hint: "E.g. ring light, tripod, camera, microphone... Please also send a photo of each item via Google Drive or WhatsApp." },
-        { id: "equipment_gdrive", label: "Equipment photos (Google Drive link)",                                                       type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Share photos of each item — include how much it cost" },
-        { id: "quiet_space",      label: "Do you have a quiet and well-lit space for content creation?",                               type: "select",     required: true,  options: ["Yes", "Somewhat", "No"] },
-        { id: "room_tour_gdrive", label: "Room tour / shooting location (Google Drive link)",                                          type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Send a room tour video or photos of where you'd shoot — so we can assess lighting and setup" },
-        { id: "outfits",          label: "Do you have different outfits ready?",                                                       type: "select",     required: true,  options: ["Yes, many", "Yes, a few", "Not yet"] },
-        { id: "outfits_gdrive",   label: "Outfit photos (Google Drive link)",                                                          type: "text",       required: false, placeholder: "Paste Google Drive link here", hint: "📲 Send photos in your 3 favourite outfits — the ones you feel hottest in" },
-        { id: "content_inspo",    label: "Send 3–4 Reels or creators whose content style you like — so we get a feel for your direction", type: "textarea", required: false, placeholder: "E.g. @creatorname on TikTok, instagram.com/reels/...", hint: "Links or usernames are fine" },
-      ]
-    },
-    {
-      id: "social",
-      title: "📲 Social Media & Content",
-      fields: [
-        { id: "platforms",        label: "Which social media platforms are you currently active on that we can use for OnlyFans?",  type: "multicheck", required: false, options: ["Instagram", "TikTok", "Twitter/X", "Reddit", "YouTube", "Snapchat", "Other"], hint: "No private accounts" },
-        { id: "social_links",     label: "Please send the links to all relevant social media accounts",                            type: "textarea",   required: false, placeholder: "E.g. instagram.com/username, tiktok.com/@username, twitter.com/username" },
-        { id: "has_onlyfans",     label: "Do you already have an OnlyFans account?",                                               type: "select",     required: true,  options: ["Yes", "No"], toggle: { show: ["Yes"], field: "onlyfans_link" } },
-        { id: "onlyfans_link",    label: "OnlyFans account link",                                                                  type: "text",       conditional: true, placeholder: "onlyfans.com/yourname" },
-        { id: "existing_content", label: "Do you have any existing content we can use?",                                           type: "select",     required: true,  options: ["Yes, photos & videos", "Yes, photos only", "Yes, videos only", "No"] },
-      ]
-    },
-    {
-      id: "extra",
-      title: "ℹ️ Additional Info",
-      fields: [
-        { id: "agency_before",     label: "Have you worked with an agency before?",                                  type: "select",   required: true,  options: ["Yes", "No"], toggle: { show: ["Yes"], field: "agency_experience" } },
-        { id: "agency_experience", label: "If yes, what was your experience?",                                       type: "textarea", conditional: true, placeholder: "Tell us about your experience — what worked, what didn't..." },
-        { id: "anything_else",     label: "Is there anything else important we should know about you?",              type: "textarea", required: false, placeholder: "Feel free to share anything relevant..." },
-      ]
-    }
-  ],
-  de: [
-    {
-      id: "personal",
-      title: "👤 Persönliche Informationen",
-      fields: [
-        { id: "name",        label: "Wie ist dein Name / Künstlername?",          type: "text",   required: true,  placeholder: "z.B. Sofia Rose" },
-        { id: "age",         label: "Wie alt bist du?",                           type: "number", required: true,  min: 18, max: 99 },
-        { id: "height",      label: "Wie groß bist du?",                          type: "text",   required: true,  placeholder: "z.B. 165 cm" },
-        { id: "nationality", label: "Was ist deine Nationalität?",                 type: "text",   required: true,  placeholder: "z.B. Deutsch" },
-        { id: "location",    label: "Wo wohnst du aktuell? (Land / Stadt)",        type: "text",   required: true,  placeholder: "z.B. Deutschland, Berlin" },
-        { id: "job",         label: "Was ist dein aktueller Job / Beschäftigung?", type: "text",   required: false, placeholder: "z.B. Studentin, Kellnerin" },
-      ]
-    },
-    {
-      id: "goals",
-      title: "🎯 Ziele & Verfügbarkeit",
-      fields: [
-        { id: "longterm_goal", label: "Was ist dein langfristiges Ziel mit OnlyFans?",                                                    type: "textarea", required: true,  placeholder: "z.B. finanzielle Freiheit, Job kündigen, Vollzeit Creator..." },
-        { id: "income_goal",   label: "Welches monatliche Einkommen möchtest du erreichen? (realistisch & Traumziel)",                    type: "text",     required: true,  placeholder: "z.B. 2.000€ realistisch / 10.000€ Traumziel" },
-        { id: "hours_per_day", label: "Wie viele Stunden pro Tag kannst du für OnlyFans aufwenden?",                                      type: "select",   required: true,  options: ["1–2 Stunden", "3–4 Stunden", "5–6 Stunden", "7–8 Stunden", "8+ Stunden"] },
-        { id: "availability",  label: "Wie sieht dein Tagesablauf aus? Wann bist du am besten verfügbar?",                               type: "select",   required: true,  options: ["Morgens (6–12)", "Nachmittags (12–18)", "Abends (18–24)", "Nachts (0–6)", "Flexibel"] },
-        { id: "no_gos",        label: "Was sind deine absoluten No-Gos auf OnlyFans und Social Media?",                                  type: "textarea", required: true,  placeholder: "z.B. kein Gesicht zeigen, keine bestimmten Handlungen, keine bestimmten Outfits..." },
-      ]
-    },
-    {
-      id: "usp",
-      title: "✨ USP-Findung: Was macht dich einzigartig?",
-      note: "Wir wollen herausfinden, was dich von anderen abhebt. Denk an alles, was besonders an dir ist – egal wie klein es scheint!",
-      fields: [
-        { id: "hobbies",   label: "Was sind deine Hobbys, Interessen oder Leidenschaften?",                                                                              type: "textarea", required: false, placeholder: "z.B. Sport, Kochen, Gaming, Kunst, Reisen...", hint: "z.B. Sport, Kochen, Gaming, Kunst, Reisen..." },
-        { id: "talents",   label: "Hast du besondere Talente oder Fähigkeiten, die man in Content einbauen könnte? (kann wirklich alles sein)",                          type: "textarea", required: false, placeholder: "z.B. Tanzen, Kochen, Akzent, Humor, Sprachen...", hint: "z.B. Tanzen, Kochen, ein besonderer Akzent, Humor, Instrumente..." },
-        { id: "pets",      label: "Hast du Haustiere? Wenn ja, welche?",                                                                                                 type: "text",     required: false, placeholder: "z.B. Hund, Katze, Kaninchen...", hint: "Haustiere funktionieren super in Reels!" },
-        { id: "locations", label: "Hast du Zugang zu besonderen Locations außerhalb deiner Wohnung?",                                                                    type: "textarea", required: false, placeholder: "z.B. Pferdestall, Pool, Boot, Fitnessstudio, Restaurant, Strand...", hint: "z.B. Pferdestall, Pool, Boot, Fitnessstudio, Restaurant, Natur-Spots, Strand..." },
-        { id: "gadgets",   label: "Hast du besondere Gegenstände, Gadgets oder Accessoires, die auffallen könnten?",                                                     type: "textarea", required: false, placeholder: "z.B. Motorrad, Sportwagen, Musikinstrument, Sammlungen...", hint: "z.B. Motorrad, Sportwagen, Musikinstrument, Sammlungen..." },
-      ]
-    },
-    {
-      id: "equipment",
-      title: "📱 Equipment, Setup & Content-Stil",
-      fields: [
-        { id: "phone_model",      label: "Welches Handy nutzt du aktuell?",                                                                          type: "text",       required: true,  placeholder: "z.B. iPhone 14 Pro", hint: "Modell & Kameraqualität, z.B. iPhone 14 Pro, Samsung S23" },
-        { id: "equipment_list",   label: "Hast du weiteres Equipment?",                                                                              type: "multicheck", required: false, options: ["Ringlicht", "Stativ", "Kamera", "Mikrofon", "Softbox", "Keines"], hint: "z.B. Ringlicht, Stativ, Kamera, Mikrofon... Bitte schick auch ein Foto von jedem Gerät per Google Drive oder WhatsApp." },
-        { id: "equipment_gdrive", label: "Equipment-Fotos (Google Drive Link)",                                                                      type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick Fotos von jedem Gerät — schreib dazu wie viel es gekostet hat" },
-        { id: "quiet_space",      label: "Hast du einen ruhigen, gut beleuchteten Raum für Content-Erstellung?",                                     type: "select",     required: true,  options: ["Ja", "Teilweise", "Nein"] },
-        { id: "room_tour_gdrive", label: "Room Tour / Shooting Location (Google Drive Link)",                                                        type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick ein Room-Tour-Video oder Fotos von dort, wo du Content drehen würdest – so können wir Beleuchtung und Setup einschätzen" },
-        { id: "outfits",          label: "Hast du verschiedene Outfits bereit?",                                                                     type: "select",     required: true,  options: ["Ja, viele", "Ja, einige", "Noch nicht"] },
-        { id: "outfits_gdrive",   label: "Outfit-Fotos (Google Drive Link)",                                                                         type: "text",       required: false, placeholder: "Google Drive Link hier einfügen", hint: "📲 Schick mir Bilder in deinen 3 Lieblingsoutfits, in denen du dich am heißesten fühlst" },
-        { id: "content_inspo",    label: "Schick mir 3–4 Reels oder Creator, die dir vom Content her gefallen",                                      type: "textarea",   required: false, placeholder: "z.B. @creatorname auf TikTok, instagram.com/reels/...", hint: "Damit wir ein Gefühl dafür bekommen, welche Richtung dir liegt — Links oder Usernamen sind fine" },
-      ]
-    },
-    {
-      id: "social",
-      title: "📲 Social Media & Content",
-      fields: [
-        { id: "platforms",        label: "Auf welchen Social-Media-Plattformen bist du aktuell aktiv, die wir für OF nutzen können?",  type: "multicheck", required: false, options: ["Instagram", "TikTok", "Twitter/X", "Reddit", "YouTube", "Snapchat", "Andere"], hint: "Keine privaten Accounts" },
-        { id: "social_links",     label: "Bitte schick die Links zu allen relevanten Social-Media-Accounts",                          type: "textarea",   required: false, placeholder: "z.B. instagram.com/username, tiktok.com/@username, twitter.com/username" },
-        { id: "has_onlyfans",     label: "Hast du bereits einen OnlyFans-Account?",                                                    type: "select",     required: true,  options: ["Ja", "Nein"], toggle: { show: ["Ja"], field: "onlyfans_link" } },
-        { id: "onlyfans_link",    label: "OnlyFans Account Link",                                                                      type: "text",       conditional: true, placeholder: "onlyfans.com/deinname" },
-        { id: "existing_content", label: "Hast du bereits bestehenden Content, den wir nutzen können?",                               type: "select",     required: true,  options: ["Ja, Fotos & Videos", "Ja, nur Fotos", "Ja, nur Videos", "Nein"] },
-      ]
-    },
-    {
-      id: "extra",
-      title: "ℹ️ Weitere Infos",
-      fields: [
-        { id: "agency_before",     label: "Hast du schon mit einer Agentur zusammengearbeitet?",                     type: "select",   required: true,  options: ["Ja", "Nein"], toggle: { show: ["Ja"], field: "agency_experience" } },
-        { id: "agency_experience", label: "Wenn ja, wie war deine Erfahrung?",                                       type: "textarea", conditional: true, placeholder: "Erzähl uns von deiner Erfahrung — was hat funktioniert, was nicht..." },
-        { id: "anything_else",     label: "Gibt es sonst noch etwas Wichtiges, das wir über dich wissen sollten?",   type: "textarea", required: false, placeholder: "Teile gerne alles Relevante..." },
-      ]
-    }
-  ]
-};
-
-function CreatorFormPage() {
-  const [lang, setLang] = useState("en");
-  const [section, setSection] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [stage, setStage] = useState("form");
-  const [submitErr, setSubmitErr] = useState(false);
-
-  const sections = SECTIONS[lang];
-  const currentSec = sections[section];
-
-  const isVisible = (field) => {
-    if (!field.conditional) return true;
-    for (const f of currentSec.fields) {
-      if (f.toggle && f.toggle.field === field.id) {
-        return f.toggle.show.includes(answers[f.id] || "");
-      }
-    }
-    return false;
-  };
-
-  const validate = () => {
-    for (const f of currentSec.fields) {
-      if (f.required && isVisible(f)) {
-        if (f.type === "multicheck") continue;
-        if (!answers[f.id]?.toString().trim()) return false;
-      }
-    }
-    return true;
-  };
-
-  const next = () => {
-    if (!validate()) { alert(lang === "en" ? "⚠️ Please fill in all required fields (*)" : "⚠️ Bitte alle Pflichtfelder (*) ausfüllen!"); return; }
-    if (section < sections.length - 1) { setSection(s => s + 1); window.scrollTo(0, 0); }
-    else { setStage("summary"); window.scrollTo(0, 0); }
-  };
-
-  const back = () => { setSection(s => s - 1); window.scrollTo(0, 0); };
-
-  const submit = async () => {
-    try {
-      const payload = { ...answers, lang, timestamp: new Date().toISOString() };
-      // Convert multicheck arrays to strings for Sheets
-      Object.keys(payload).forEach(k => { if (Array.isArray(payload[k])) payload[k] = payload[k].join(", "); });
-      await fetch(GOOGLE_SHEETS_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-      setStage("success"); window.scrollTo(0, 0);
-    } catch(e) { setSubmitErr(true); }
-  };
-
-  const copyClipboard = () => {
-    let t = lang === "en" ? "=== CREATOR ONBOARDING ===\n\n" : "=== CREATOR ONBOARDING ===\n\n";
-    sections.forEach(sec => {
-      t += `${sec.title}\n`;
-      sec.fields.forEach(f => {
-        const val = Array.isArray(answers[f.id]) ? answers[f.id].join(", ") : answers[f.id];
-        if (val) t += `${f.label}: ${val}\n`;
-      });
-      t += "\n";
-    });
-    navigator.clipboard.writeText(t).then(() => alert(lang === "en" ? "✅ Copied to clipboard!" : "✅ In Zwischenablage kopiert!"));
-  };
-
-  const toggleCheck = (fieldId, option) => {
-    const current = answers[fieldId] || [];
-    const updated = current.includes(option) ? current.filter(x => x !== option) : [...current, option];
-    setAnswers(a => ({ ...a, [fieldId]: updated }));
-  };
-
-  const fStyle = { width: "100%", padding: "11px 14px", border: "2px solid #e2e8f0", borderRadius: 8, fontSize: 14, color: "#2d3748", outline: "none", background: "#fff", fontFamily: "inherit", boxSizing: "border-box" };
-  const selStyle = { ...fStyle, cursor: "pointer", appearance: "none", backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: 18, paddingRight: 38 };
-
-  const renderField = (f) => {
-    if (f.conditional && !isVisible(f)) return null;
-    const val = answers[f.id];
-    const set = (v) => setAnswers(a => ({ ...a, [f.id]: v }));
-
-    return (
-      <div key={f.id} style={{ marginBottom: 22 }}>
-        <label style={{ display: "block", fontWeight: 600, color: "#2d3748", fontSize: 14, marginBottom: f.hint ? 2 : 8 }}>
-          {f.label} {f.required && <span style={{ color: "#e53e3e" }}>*</span>}
-        </label>
-        {f.hint && (
-          <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 7, padding: "7px 12px", marginBottom: 8, fontSize: 12, color: "#667eea" }}>
-            {f.hint}
-          </div>
-        )}
-        {f.type === "select" && (
-          <select value={val || ""} onChange={e => set(e.target.value)} style={selStyle}>
-            <option value="">-- {lang === "en" ? "Please select" : "Bitte wählen"} --</option>
-            {f.options.map(o => <option key={o} value={o}>{o}</option>)}
-          </select>
-        )}
-        {f.type === "text" && (
-          <input type="text" value={val || ""} onChange={e => set(e.target.value)} placeholder={f.placeholder || ""} style={fStyle} />
-        )}
-        {f.type === "number" && (
-          <input type="number" value={val || ""} onChange={e => set(e.target.value)} min={f.min} max={f.max} style={fStyle} />
-        )}
-        {f.type === "textarea" && (
-          <textarea value={val || ""} onChange={e => set(e.target.value)} placeholder={f.placeholder || ""} style={{ ...fStyle, minHeight: 90, resize: "vertical" }} />
-        )}
-        {f.type === "multicheck" && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
-            {f.options.map(o => {
-              const checked = (answers[f.id] || []).includes(o);
-              return (
-                <div key={o} onClick={() => toggleCheck(f.id, o)} style={{ display: "flex", alignItems: "center", gap: 7, padding: "8px 14px", borderRadius: 8, border: `2px solid ${checked ? "#667eea" : "#e2e8f0"}`, background: checked ? "rgba(102,126,234,0.08)" : "#fff", cursor: "pointer", fontSize: 13, color: checked ? "#667eea" : "#4a5568", fontWeight: checked ? 600 : 400, userSelect: "none", transition: "all 0.15s" }}>
-                  <span style={{ width: 16, height: 16, borderRadius: 4, border: `2px solid ${checked ? "#667eea" : "#cbd5e0"}`, background: checked ? "#667eea" : "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    {checked && <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                  </span>
-                  {o}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  // ── SUCCESS ──
-  if (stage === "success") return (
-    <div style={{ maxWidth: 560, margin: "60px auto", padding: "0 24px", textAlign: "center" }}>
-      <div style={{ fontSize: 52, marginBottom: 16 }}>🎉</div>
-      <h2 style={{ color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 28, margin: "0 0 12px" }}>
-        {lang === "en" ? "Successfully Submitted!" : "Erfolgreich abgesendet!"}
-      </h2>
-      <p style={{ color: "#4a5568", fontSize: 15, lineHeight: 1.8, marginBottom: 24 }}>
-        {lang === "en"
-          ? "Thank you! We'll review your info and get back to you via WhatsApp within 24–48 hours."
-          : "Danke! Wir melden uns innerhalb von 24–48 Stunden per WhatsApp bei dir."}
-      </p>
-      <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 12, padding: "18px 22px", marginBottom: 24, textAlign: "left" }}>
-        <p style={{ color: "#667eea", fontWeight: 600, margin: "0 0 8px", fontSize: 14 }}>
-          📲 {lang === "en" ? "Next Steps:" : "Nächste Schritte:"}
-        </p>
-        <p style={{ color: "#4a5568", fontSize: 13, margin: 0, lineHeight: 1.7 }}>
-          {lang === "en"
-            ? "Please also send us via WhatsApp: equipment photos, room tour video/photos, and outfit photos/videos."
-            : "Bitte schick uns noch per WhatsApp: Equipment-Fotos, Room-Tour-Video/Fotos und Outfit-Fotos/Videos."}
-        </p>
-      </div>
-      <button onClick={copyClipboard} style={{ ...saveBtn, margin: "0 auto 10px", justifyContent: "center" }}>
-        📋 {lang === "en" ? "Copy Summary" : "Zusammenfassung kopieren"}
-      </button>
-      <button onClick={() => { setAnswers({}); setSection(0); setStage("form"); }} style={{ ...cancelBtn, display: "block", margin: "0 auto" }}>
-        {lang === "en" ? "Submit another response" : "Weitere Antwort absenden"}
-      </button>
-    </div>
-  );
-
-  // ── SUMMARY ──
-  if (stage === "summary") return (
-    <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 24px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
-        <h2 style={pageTitle}>📋 {lang === "en" ? "Summary" : "Zusammenfassung"}</h2>
-        <div style={{ display: "flex", border: "1px solid rgba(102,126,234,0.3)", borderRadius: 8, overflow: "hidden" }}>
-          {["en","de"].map(l => (
-            <button key={l} onClick={() => setLang(l)} style={{ border: "none", cursor: "pointer", padding: "6px 14px", fontSize: 12, fontWeight: 600, fontFamily: "inherit", background: lang===l ? "linear-gradient(135deg,#667eea,#764ba2)" : "transparent", color: lang===l ? "#fff" : "#667eea" }}>
-              {l === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
-            </button>
-          ))}
-        </div>
-      </div>
-      {sections.map((sec) => (
-        <div key={sec.id} style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "20px 24px", marginBottom: 14, boxShadow: "0 2px 8px rgba(102,126,234,0.05)" }}>
-          <h3 style={{ margin: "0 0 14px", color: "#667eea", fontFamily: "'Cormorant Garamond', serif", fontSize: 17 }}>{sec.title}</h3>
-          {sec.fields.filter(f => {
-            const val = answers[f.id];
-            return Array.isArray(val) ? val.length > 0 : val;
-          }).map(f => (
-            <div key={f.id} style={{ display: "flex", gap: 12, padding: "7px 0", borderBottom: "1px solid rgba(102,126,234,0.06)", fontSize: 14 }}>
-              <span style={{ color: "#9b8fc4", fontWeight: 600, minWidth: 180, flexShrink: 0, fontSize: 13 }}>{f.label}</span>
-              <span style={{ color: "#2d3748" }}>{Array.isArray(answers[f.id]) ? answers[f.id].join(", ") : answers[f.id]}</span>
-            </div>
-          ))}
-        </div>
-      ))}
-      {submitErr && <p style={{ color: "#e05555", textAlign: "center", marginBottom: 12, fontSize: 13 }}>⚠️ {lang === "en" ? "Submit failed. Please try again or contact us via WhatsApp." : "Fehler beim Absenden. Bitte erneut versuchen oder per WhatsApp kontaktieren."}</p>}
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        <button onClick={() => { setStage("form"); setSection(0); window.scrollTo(0,0); }} style={cancelBtn}>
-          {lang === "en" ? "✏️ Edit" : "✏️ Bearbeiten"}
-        </button>
-        <button onClick={copyClipboard} style={{ ...cancelBtn, color: "#667eea" }}>
-          📋 {lang === "en" ? "Copy" : "Kopieren"}
-        </button>
-        <button onClick={submit} style={{ ...saveBtn, flex: 1, justifyContent: "center" }}>
-          {lang === "en" ? "✅ Submit" : "✅ Absenden"}
-        </button>
-      </div>
-    </div>
-  );
-
-  // ── FORM ──
-  const progress = ((section + 1) / sections.length) * 100;
-
-  return (
-    <div style={{ maxWidth: 680, margin: "0 auto", padding: "32px 24px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
-        <div>
-          <h2 style={pageTitle}>📝 {lang === "en" ? "Creator Onboarding" : "Creator Onboarding"}</h2>
-          <p style={pageSubtitle}>{lang === "en" ? "Please answer all questions carefully — this helps us create the best strategy for you!" : "Bitte beantworte alle Fragen sorgfältig — das hilft uns, die beste Strategie für dich zu entwickeln!"}</p>
-        </div>
-        <div style={{ display: "flex", border: "1px solid rgba(102,126,234,0.3)", borderRadius: 8, overflow: "hidden" }}>
-          {["en","de"].map(l => (
-            <button key={l} onClick={() => setLang(l)} style={{ border: "none", cursor: "pointer", padding: "6px 14px", fontSize: 12, fontWeight: 600, fontFamily: "inherit", background: lang===l ? "linear-gradient(135deg,#667eea,#764ba2)" : "transparent", color: lang===l ? "#fff" : "#667eea" }}>
-              {l === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Progress */}
-      <div style={{ marginBottom: 28 }}>
-        <div style={{ height: 6, background: "#e2e8f0", borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
-          <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg, #667eea, #764ba2)", transition: "width 0.4s ease", borderRadius: 10 }} />
-        </div>
-        <p style={{ textAlign: "center", color: "#667eea", fontSize: 12, fontWeight: 600 }}>
-          {lang === "en" ? `Section ${section + 1} of ${sections.length}` : `Abschnitt ${section + 1} von ${sections.length}`}
-        </p>
-      </div>
-
-      {/* Section card */}
-      <div style={{ background: "#fff", border: "1px solid rgba(102,126,234,0.12)", borderRadius: 14, padding: "24px", boxShadow: "0 2px 8px rgba(102,126,234,0.05)", marginBottom: 20 }}>
-        <div style={{ marginBottom: 24 }}>
-          <div style={{ background: "linear-gradient(135deg, #667eea, #764ba2)", color: "#fff", borderRadius: 8, padding: "12px 16px", fontSize: 15, fontWeight: 600, marginBottom: currentSec.note ? 10 : 0 }}>
-            {currentSec.title}
-          </div>
-          {currentSec.note && (
-            <div style={{ background: "rgba(102,126,234,0.07)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: "0 0 8px 8px", padding: "10px 14px", fontSize: 13, color: "#667eea", fontStyle: "italic" }}>
-              💡 {currentSec.note}
-            </div>
-          )}
-        </div>
-        {currentSec.hint && (
-          <div style={{ background: "rgba(102,126,234,0.06)", border: "1px solid rgba(102,126,234,0.15)", borderRadius: 10, padding: "12px 16px", marginBottom: 20, fontSize: 13, color: "#667eea", lineHeight: 1.6 }}>
-            💡 {currentSec.hint}
-          </div>
-        )}
-        {currentSec.fields.map(renderField)}
-      </div>
-
-      {/* Nav buttons */}
-      <div style={{ display: "flex", gap: 10 }}>
-        {section > 0 && (
-          <button onClick={back} style={cancelBtn}>
-            {lang === "en" ? "← Back" : "← Zurück"}
-          </button>
-        )}
-        <button onClick={next} style={{ ...saveBtn, flex: 1, justifyContent: "center" }}>
-          {section < sections.length - 1
-            ? (lang === "en" ? "Next →" : "Weiter →")
-            : (lang === "en" ? "Review Summary →" : "Zusammenfassung ansehen →")}
-        </button>
-      </div>
-    </div>
-  );
-}
